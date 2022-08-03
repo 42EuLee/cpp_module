@@ -15,6 +15,7 @@ class Animal
 	public:
 		Animal();
 		~Animal();
+		Animal(const Animal &old_obj);
 		virtual void makeSound() const;
 		const string	&getType( void ) const ;
 };

@@ -20,6 +20,13 @@ DiamondTrap::~DiamondTrap()
 	cout << "DiamondTrap Destructor called" << endl;
 }
 
+DiamondTrap::DiamondTrap(const DiamondTrap &old_obj)
+{
+	cout << "DiamondTrap copy constructor called" << endl;
+	*this = old_obj;
+}
+
+
 void DiamondTrap::attack(const std::string& target)
 {
 	this->_energy_points--;

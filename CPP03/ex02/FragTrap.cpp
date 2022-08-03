@@ -14,6 +14,12 @@ FragTrap::~FragTrap()
 	cout << "FragTrap Destructor called" << endl;
 }
 
+FragTrap::FragTrap(const FragTrap &old_obj)
+{
+	cout << "FragTrap copy constructor called" << endl;
+	*this = old_obj;
+}
+
 void FragTrap::attack(const std::string& target)
 {
 	this->_energy_points--;

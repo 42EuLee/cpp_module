@@ -169,8 +169,6 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
 }
 
 
-
-
 std::ostream &operator<<(std::ostream &out, Fixed const &value)
 {
     out << value.toFloat();

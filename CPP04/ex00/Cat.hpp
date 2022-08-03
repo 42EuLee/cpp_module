@@ -17,6 +17,7 @@ class Cat : public Animal
 	public:
 		Cat();
 		~Cat();
+		Cat(const Cat &old_obj);
 		void makeSound() const;
 };
 

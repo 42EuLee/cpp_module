@@ -16,6 +16,7 @@ class Dog : public Animal
 	public:
 		Dog();
 		~Dog();
+		Dog(const Dog &old_obj);
 		void makeSound() const;
 };
 

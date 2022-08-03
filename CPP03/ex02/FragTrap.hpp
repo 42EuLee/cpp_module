@@ -10,6 +10,7 @@ class FragTrap : public ClapTrap
 	public:
 		FragTrap(string name);
 		~FragTrap();
+		FragTrap (const FragTrap &old_obj);
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);

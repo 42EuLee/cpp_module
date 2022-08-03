@@ -27,6 +27,6 @@ class Fixed
 		void operator = (const Fixed &eg );
 };
 
-std::ostream & operator << (std::ostream &o, Fixed const &rhs);
+std::ostream &operator << (std::ostream &o, Fixed const &rhs);
 
 #endif

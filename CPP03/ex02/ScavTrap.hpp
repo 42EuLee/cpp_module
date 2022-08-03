@@ -10,6 +10,7 @@ class ScavTrap : public ClapTrap
 	public:
 		ScavTrap( const std::string name );
 		~ScavTrap( void );
+		ScavTrap(const ScavTrap &old_obj);
 		void	beRepaired(unsigned int amount);
 		void	attack( const std::string &target );
 		void	takeDamage(unsigned int amount);

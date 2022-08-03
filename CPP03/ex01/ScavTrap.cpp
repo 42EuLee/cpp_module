@@ -14,6 +14,12 @@ ScavTrap::~ScavTrap()
 	cout << "ScavTrap Destructor called" << endl;
 }
 
+ScavTrap::ScavTrap (const ScavTrap &old_obj)
+{
+	cout << "ScavTrap copy constructor called" << endl;
+	*this = old_obj;
+}
+
 void ScavTrap::guardGate()
 {
 	cout << "ScavTrap is now in Gatekeeper mode. It does nothing, great.	" << endl;

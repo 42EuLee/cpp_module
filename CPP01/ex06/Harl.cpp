@@ -26,10 +26,8 @@ void Harl::complain( std::string level )
 		case 2 :
 			Harl::warning();
 		case 3 :
-		{
 			Harl::error();
 			break ;
-		}
 		case 4 :
 			cout << "NIOOOOH" << endl;
 	}
