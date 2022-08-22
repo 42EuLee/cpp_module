@@ -59,10 +59,10 @@ int	main(void)
 
 	// cout << "Test 4: " << endl;
 
-	Bureaucrat beau1 = Bureaucrat("beau1", 40, 40); // higher grade
-	Bureaucrat beau2 = Bureaucrat("beau2", 60, 60); // lower grade
-	Bureaucrat beau3 = Bureaucrat("beau3", 150, 150); // Eu Lee
-	Bureaucrat beau4 = Bureaucrat("beau4", 1, 1); // Global elite
+	Bureaucrat beau1 = Bureaucrat("beau1", 40); // higher grade
+	Bureaucrat beau2 = Bureaucrat("beau2", 60); // lower grade
+	Bureaucrat beau3 = Bureaucrat("beau3", 150); // Eu Lee
+	Bureaucrat beau4 = Bureaucrat("beau4", 1); // Global elite
 
 	Form *form1;
 	Form *form2;
@@ -88,6 +88,7 @@ int	main(void)
 	form2->execute(beau4);
 	form2->execute(beau4);
 	cout << "============\n";
+	
 	form1->execute(beau4);
 	form1->beSigned(beau3);
 	form1->beSigned(beau1);
@@ -98,6 +99,6 @@ int	main(void)
 
 	cout << endl;
 	delete form1;
-	delete form2;
-	delete form3;
+	// delete form2;
+	// delete form3;
 }

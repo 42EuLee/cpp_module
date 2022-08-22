@@ -12,8 +12,8 @@ using std::exception;
 class Bureaucrat
 {
 	private:
-		string _name;
-		int		_grade;
+		const string	_name;
+		int				_grade;
 
 	public:
 		Bureaucrat(string name, int grade);
@@ -25,6 +25,8 @@ class Bureaucrat
 		void			setGrade(int grade);
 		void			incrementGrade(void);
 		void			decrementGrade(void);
+		Bureaucrat &operator=(const Bureaucrat &ref);
+
 
 		class	GradeTooHighException : public std::exception
 		{
@@ -37,10 +39,9 @@ class Bureaucrat
 			public:
 				virtual const char	*what(void) const throw();
 		};
-
-		
+	
 };
 
-std::ostream &operator << (std::ostream &out, Bureaucrat const &rhs);
+std::ostream &operator<<(std::ostream &out, Bureaucrat const &rhs);
 
 #endif

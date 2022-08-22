@@ -1,6 +1,11 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
+# include <iostream>
+# include <string>
+# include <exception>
+
+# include "Form.hpp"
 # include "Bureaucrat.hpp"
 
 using std::cout;
@@ -13,6 +18,7 @@ class Bureaucrat ;
 class ShrubberyCreationForm : public Form
 {
 	private:
+		const string	_target;
 
 	public:
 		ShrubberyCreationForm();
@@ -43,10 +49,15 @@ class ShrubberyCreationForm : public Form
 			public:
 				virtual const char	*what(void) const throw();
 		};
-		bool	getSigned();
-		string	getName();
-		int		getSignedGrade();
+		bool	getSign() const;
+		string	getName() const;
+		string	getTarget() const;
+		int		getSignGrade() const;
 		void	setSigned(bool value);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &ref);
+
 };
+
+std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm const &rhs);
 
 #endif

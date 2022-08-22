@@ -1,21 +1,32 @@
-#include "Fixed.hpp"
+// #include "Fixed.hpp"
+#include "Point.hpp"
 
-int main( void ) 
+Fixed sign(Point const a, Point const b, Point const c)
 {
-Fixed a;
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-// std::cout << b << std::endl;
-// std::cout << Fixed::max( a, b ) << std::endl;
+	return (a.getX() - c.getX()) * (b.getY() - c.getY()) - (b.getX() - c.getX()) * (a.getY() - c.getY());
+}
 
-std::cout << a << std::endl;
+bool PointInTriangle(Point const a, Point const b, Point const c, Point const point)
+{
+	Fixed d1, d2, d3;
+	bool has_neg, has_pos;
 
-std::cout << ++a << std::endl;
-std::cout << a << std::endl;
+	d1 = sign(point, a, b);
+	d2 = sign(point, b, c);
+	d3 = sign(point, c, a);
 
-std::cout << a++ << std::endl;
-std::cout << a << std::endl;
+	has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+	has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
 
-std::cout << b << std::endl;
-std::cout << Fixed::max( a, b ) << std::endl;
-return 0;
+	return !(has_neg && has_pos);
+}
+
+int main(void) 
+{
+	Point	a(0,0);
+	Point	b(5,5);
+	Point	c(10, 10);
+	Point	point(4,4);
+	cout << PointInTriangle(a, b, c, point) << endl;
+	return (0);
 }

@@ -1,13 +1,21 @@
+#ifndef POINT_HPP
+# define POINT_HPP
+
 #include "Fixed.hpp"
 
 class Point
 {
 	private:
-		Fixed const x;
-		Fixed const y;
+		Fixed _x;
+		Fixed _y;
 	public:
 		Point();
 		~Point();
-		float sign(Point const a, Point const b, Point const c);
-		bool PointInTriangle (Point const a, Point const b, Point const c, Point const point);
-}
+		Point(const float x, const float y);
+		Point(const Point &ref);
+		Fixed	getX(void) const ;
+		Fixed	getY(void) const ;
+		Point &operator=(const Point &ref );	
+};
+
+#endif

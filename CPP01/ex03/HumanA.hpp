@@ -15,6 +15,7 @@ class HumanA
 		string _name;
 		Weapon &_weapon;
 	public:
+		HumanA();
 		HumanA(string name, Weapon &weapon);
 		~HumanA(void);
 

@@ -16,6 +16,7 @@ class HumanB
 		string _name;
 		Weapon *_weapon;
 	public:
+		HumanB();
 		HumanB(string name);
 		~HumanB(void);
 

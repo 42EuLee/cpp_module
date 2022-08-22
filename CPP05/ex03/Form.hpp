@@ -1,6 +1,10 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
+# include <iostream>
+# include <string>
+# include <exception>
+
 # include "Bureaucrat.hpp"
 
 using std::cout;
@@ -13,17 +17,17 @@ class Bureaucrat ;
 class Form
 {
 	protected:
-		string	_name;
-		bool	_signed;
-		int		_signed_grade;
-		int		_exec_grade;
+		const string	_name;
+		const int		_sign_grade;
+		const int		_exec_grade;
+		bool			_signed;
 
 	public:
 		Form();
 		virtual ~Form();
 		Form(const Form &old_obj);
-		Form(string form);
-		virtual void	beSigned(Bureaucrat &name) = 0 ;
+		Form(string form, int sign_grade, int exec_grade);
+		virtual void	beSigned(Bureaucrat &name) = 0;
 		virtual void	execute(Bureaucrat const &executor) = 0;
 
 		class	GradeTooHighException : public exception
@@ -47,11 +51,14 @@ class Form
 			public:
 				virtual const char	*what(void) const throw();
 		};
-		bool	getSigned() const;
+		bool	getSign() const;
 		string	getName() const;
-		int		getSignedGrade() const;
-		int		getExec() const;
+		int		getSignGrade() const;
+		int		getExecGrade() const;
 		void	setSigned(bool value);
+		Form	&operator=(const Form &ref);
 };
+
+std::ostream &operator<<(std::ostream &out, Form const &rhs);
 
 #endif

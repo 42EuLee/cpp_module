@@ -2,33 +2,29 @@
 
 Bureaucrat::Bureaucrat()
 {
-	cout << "Bureaucrat default constructor called" << endl;
+	// cout << "Bureaucrat default constructor called" << endl;
+
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	cout << "Bureaucrat destructor called" << endl;
+	// cout << "Bureaucrat destructor called" << endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &old_obj)
+Bureaucrat::Bureaucrat(const Bureaucrat &old_obj): _name(old_obj.getName())
 {
-	cout << "Bureaucrat copy constructor called" << endl;
-	*this = old_obj;
+	// cout << "Bureaucrat copy constructor called" << endl;
+	this->_grade = old_obj.getGrade();
 }
 
-Bureaucrat::Bureaucrat(string name, int grade, int exec)
+Bureaucrat::Bureaucrat(string name, int grade): _name(name)
 {
-	cout << "Bureaucrat assignment constructor called" << endl;
-	this->_name = name;
+	// cout << "Bureaucrat assignment constructor called" << endl;
+	// this->_name = name;
 	this->_grade = grade;
-	this->_exec_grade = exec;
 	if (grade < 1)
 		throw GradeTooHighException();
 	else if (grade > 150)
-		throw GradeTooLowException();
-	if (exec < 1)
-		throw GradeTooHighException();
-	else if (exec > 150)
 		throw GradeTooLowException();
 }
 
@@ -47,10 +43,10 @@ const string &Bureaucrat::getName(void) const
 	return(this->_name);
 }
 
-int	Bureaucrat::getExec(void) const
-{
-	return (this->_exec_grade);
-}
+// int	Bureaucrat::getExecGrade(void) const
+// {
+// 	return (this->_exec_grade);
+// }
 
 void	Bureaucrat::incrementGrade(void)
 {
@@ -99,12 +95,8 @@ const char	*Bureaucrat::CannotExecute::what(void) const throw()
 
 void		Bureaucrat::signForm(Form &name)
 {	
-	if (name.getSigned() == false && this->_grade < name.getSignedGrade())
+	if (name.getSign() == false && this->_grade < name.getSignGrade())
 	{
-		// cout << name.getSigned() << endl;
-		// cout << "FORM" << name.getSignedGrade() << endl;
-		// cout << "buiabd" << this->_grade << endl;
-		// cout << endl;
 		cout << this->_name << " signed " << name.getName() << endl;
 		name.setSigned(true);
 	}
@@ -116,20 +108,26 @@ void		Bureaucrat::executeForm(Form const &form)
 {
 	try
 	{
-		if (form.getSigned() == true && this->_exec_grade < form.getSignedGrade())
+		if (form.getSign() == true && this->_grade < form.getSignGrade())
 			cout << this->_name << " executed " << form.getName() << endl;
 		else
 			throw CannotExecute();
 	}
-	catch(exception &caught)
+	catch(exception &e)
 	{
-		cout << caught.what() << endl;
+		cout << e.what() << endl;
 	}
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &ref)
+{
+  if (this != &ref) 
+	*this = ref;
+  return (*this);
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &rhs)
 {
-    out << rhs.getName() << ", bureaucrat grade: " 
-		<< rhs.getGrade() << endl;
-    return (out);
+    out << rhs.getName() << " grade <" << rhs.getGrade() << ">" << endl;
+    return (out); 
 }

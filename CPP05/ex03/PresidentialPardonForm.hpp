@@ -13,7 +13,8 @@ class Bureaucrat ;
 class PresidentialPardonForm : public Form
 {
 	private:
-	
+		const string	_target;
+
 	public:
 		PresidentialPardonForm();
 		virtual ~PresidentialPardonForm();
@@ -43,10 +44,14 @@ class PresidentialPardonForm : public Form
 			public:
 				virtual const char	*what(void) const throw();
 		};
-		bool	getSigned();
-		string	getName();
-		int		getSignedGrade();
+		bool	getSign() const;
+		string	getName() const;
+		string	getTarget() const;
+		int		getSignGrade() const;
 		void	setSigned(bool value);
+		PresidentialPardonForm 	&operator=(const PresidentialPardonForm &ref);
 };
+
+std::ostream &operator<<(std::ostream &out, PresidentialPardonForm const &rhs);
 
 #endif

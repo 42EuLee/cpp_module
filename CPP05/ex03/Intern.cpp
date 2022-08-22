@@ -19,26 +19,32 @@ Intern::Intern(const Intern &old_obj)
 	*this = old_obj;
 }
 
-Form *Intern::makeForm(string form, string name)
+Form *Intern::makeForm(string form, string target)
 {
 	int i;
+	Form *newform = NULL;
 
 	i = 0;
-	string types[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+	const string types[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
 	while (i < 3 && form.compare(types[i]))
 		i++;
 	switch(i)
 	{
 		case 0 :
-			Form *newform = new PresidentialPardonForm();
-			return ()
+			// cout << "<robotomy created>" << endl;
+			newform = new RobotomyRequestForm(target);
+			return (newform);
 		case 1 :
-
+			// cout << "<presidential created>" << endl;
+			newform = new PresidentialPardonForm(target);
+			return (newform);
 		case 2 :
-		{
-			break ;
-		}
-		case 3 :
-			cout << "No such form biatch" << endl;
+			// cout << "<shrubbery created>" << endl;
+			newform = new ShrubberyCreationForm(target);
 	}
+	if (i >= 3)
+		std::cout << "There's no such form";
+	else
+		std::cout << "Form <" << types[i] << "> has been created\n";
+	return (newform);
 }

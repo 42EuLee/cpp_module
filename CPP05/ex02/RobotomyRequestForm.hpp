@@ -1,6 +1,11 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
+# include <iostream>
+# include <string>
+# include <exception>
+
+# include "Form.hpp"
 # include "Bureaucrat.hpp"
 
 using std::cout;
@@ -13,7 +18,8 @@ class Bureaucrat ;
 class RobotomyRequestForm : public Form
 {
 	private:
-
+		const string	_target;
+		
 	public:
 		RobotomyRequestForm();
 		~RobotomyRequestForm();
@@ -43,10 +49,15 @@ class RobotomyRequestForm : public Form
 			public:
 				virtual const char	*what(void) const throw();
 		};
-		bool	getSigned();
-		string	getName();
-		int		getSignedGrade();
+		bool	getSign() const;
+		string	getName() const;
+		string	getTarget() const;
+		int		getSignGrade() const;
 		void	setSigned(bool value);
+		RobotomyRequestForm &operator=(const RobotomyRequestForm &ref);
+
 };
+
+std::ostream &operator<<(std::ostream &out, RobotomyRequestForm const &rhs);
 
 #endif

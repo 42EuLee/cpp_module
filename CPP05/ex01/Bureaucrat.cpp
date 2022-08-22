@@ -2,25 +2,26 @@
 
 Bureaucrat::Bureaucrat()
 {
-	cout << "Bureaucrat default constructor called" << endl;
+	// cout << "Bureaucrat default constructor called" << endl;
 
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	cout << "Bureaucrat destructor called" << endl;
+	// cout << "Bureaucrat destructor called" << endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &old_obj)
+Bureaucrat::Bureaucrat(const Bureaucrat &old_obj): _name(old_obj.getName())
 {
-	cout << "Bureaucrat copy constructor called" << endl;
-	*this = old_obj;
+	// cout << "Bureaucrat copy constructor called" << endl;
+	// this->_name = old_obj.getName();
+	this->_grade = old_obj.getGrade();
 }
 
-Bureaucrat::Bureaucrat(string name, int grade)
+Bureaucrat::Bureaucrat(string const name, int grade): _name(name)
 {
-	cout << "Bureaucrat assignment constructor called" << endl;
-	this->_name = name;
+	// cout << "Bureaucrat assignment constructor called" << endl;
+	// this->_name = name;
 	this->_grade = grade;
 	if (grade < 1)
 		throw GradeTooHighException();
@@ -85,9 +86,16 @@ const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 	return ("Grade Too Low");
 }
 
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &ref)
+{
+  if (this != &ref) 
+	*this = ref;
+  return (*this);
+}
+
 void		Bureaucrat::signForm(Form &name)
 {	
-	if (name.getSigned() == false && this->_grade < name.getSignedGrade())
+	if (name.getSign() == false && this->_grade < name.getSignGrade())
 	{
 		cout << this->_name << " signed " << name.getName() << endl;
 		name.setSigned(true);
@@ -96,10 +104,8 @@ void		Bureaucrat::signForm(Form &name)
 		cout << this->_name << " couldn't sign " << name.getName() << " because ";
 }
 
-
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &rhs)
 {
-    out << rhs.getName() << ", bureaucrat grade: " 
-		<< rhs.getGrade() << endl;
-    return (out);
+    out << rhs.getName() << " grade <" << rhs.getGrade() << ">" << endl;
+    return (out); 
 }

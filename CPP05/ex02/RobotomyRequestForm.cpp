@@ -1,24 +1,23 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm()
+RobotomyRequestForm::RobotomyRequestForm(): Form("Robotomy Request Form", 72, 45)
 {
 	cout << "RobotomyRequestForm Default constructor called" << endl;
-	
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &old_obj)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &old_obj): Form("Robotomy Request Form", old_obj.getSignGrade(), old_obj.getExecGrade()), _target(old_obj.getTarget())
 {
-	cout << "RobotomyRequestForm copy constructor called" << endl;
-	*this = old_obj;
+	// cout << "RobotomyRequestForm copy constructor called" << endl;
+	this->_signed = old_obj.getSign();
 }
 
-RobotomyRequestForm::RobotomyRequestForm(string form)
+RobotomyRequestForm::RobotomyRequestForm(string target): Form("Robotomy Request Form", 72, 45), _target(target)
 {
-	cout << "RobotomyRequestForm name constructor called" << endl;
+	// cout << "RobotomyRequestForm name constructor called" << endl;
 	this->_signed = false;
-	this->_name = form;
-	this->_signed_grade = 72;
-	this->_exec_grade = 45;
+	// this->_name = form;
+	// this->_sign_grade = 72;
+	// this->_exec_grade = 45;
 }
 
 const char	*RobotomyRequestForm::GradeTooHighException::what(void) const throw()
@@ -45,13 +44,13 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor)
 {
 	try
 	{
-		if (this->_signed == true && this->_exec_grade > executor.getExec())
+		if (this->_signed == true && this->_exec_grade > executor.getGrade())
 		{
-			cout << "*Drilling noises due to being a retard*" << endl;
+			cout << "*Retarded drilling noises, RIP eardrums*" << endl;
 			if (rand() % 2 == 0)
-				cout << executor.getName() << " Has been rotomized with 50% success rate" << endl;
+				cout << _target << " has been rotomized with 50% success rate" << endl;
 			else
-				cout << "Robotomy failed," << executor.getName() << " lost brain cells" << endl;
+				cout << "Robotomy failed," << _target << " lost brain cells" << endl << endl;
 		}
 		else
 			throw NotExecuted();
@@ -66,7 +65,7 @@ void RobotomyRequestForm::beSigned(Bureaucrat &name)
 {
 	try
 	{
-		if (this->_signed == false && this->_signed_grade > name.getGrade())
+		if (this->_signed == false && this->_sign_grade > name.getGrade())
 		{
 			name.signForm(*this);
 		}
@@ -75,7 +74,7 @@ void RobotomyRequestForm::beSigned(Bureaucrat &name)
 			name.signForm(*this);
 			throw FormAlreadySigned();
 		}
-		else if (this->_signed_grade < name.getGrade())
+		else if (this->_sign_grade < name.getGrade())
 		{
 			name.signForm(*this);
 			throw GradeTooLowException();
@@ -87,19 +86,24 @@ void RobotomyRequestForm::beSigned(Bureaucrat &name)
 	}
 }
 
-bool RobotomyRequestForm::getSigned()
+bool RobotomyRequestForm::getSign() const
 {
 	return (this->_signed);
 }
 
-string RobotomyRequestForm::getName()
+string RobotomyRequestForm::getName() const
 {
 	return (this->_name);
 }
 
-int RobotomyRequestForm::getSignedGrade()
+string	RobotomyRequestForm::getTarget() const
 {
-	return (this->_signed_grade);
+	return (this->_target);
+}
+
+int RobotomyRequestForm::getSignGrade() const
+{
+	return (this->_sign_grade);
 }
 
 void	RobotomyRequestForm::setSigned(bool value)
@@ -107,7 +111,24 @@ void	RobotomyRequestForm::setSigned(bool value)
 	this->_signed = value;
 }
 
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &ref)
+{
+  if (this != &ref) 
+	*this = ref;
+  return (*this);
+}
+
+std::ostream &operator<<(std::ostream &out, RobotomyRequestForm const &rhs)
+{
+    out << "Form name: "  << rhs.getName() << endl 
+	<< "Sign Grade: " << rhs.getSignGrade() << endl 
+	<< "Exec Grade: " << rhs.getExecGrade() << endl
+	<< "Target: " << rhs.getTarget() << endl
+	<< "Signed status: " << rhs.getSign() << endl;
+    return (out);
+}
+
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	cout << "Form Destructor called" << endl;
+	// cout << "Form Destructor called" << endl;
 }

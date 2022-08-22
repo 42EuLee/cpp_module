@@ -1,33 +1,32 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm()
+PresidentialPardonForm::PresidentialPardonForm(): Form("Presidential Pardon Form", 25, 5)
 {
-	cout << "PresidentialPardonForm Default constructor called" << endl;
+	// cout << "PresidentialPardonForm Default constructor called" << endl;
 	
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &old_obj)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &old_obj):
+Form("Presidential Pardon Form", old_obj.getSignGrade(), old_obj.getExecGrade()), _target(old_obj.getTarget())
 {
-	cout << "PresidentialPardonForm copy constructor called" << endl;
-	*this = old_obj;
+	// cout << "PresidentialPardonForm copy constructor called" << endl;
+	this->_signed = old_obj.getSign();
 }
 
-PresidentialPardonForm::PresidentialPardonForm(string form)
+PresidentialPardonForm::PresidentialPardonForm(string target): Form("Presidential Pardon Form", 25, 5), _target(target)
 {
-
-	cout << "PresidentialPardonForm name constructor called" << endl;
 	this->_signed = false;
-	this->_name = form;
-	this->_signed_grade = 25;
-	this->_exec_grade = 5;
+	// cout << "PresidentialPardonForm name constructor called" << endl;
+	// this->_sign_grade = 25;
+	// this->_exec_grade = 5;
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const &executor)
 {
 	try
 	{
-		if (this->_signed == true && this->_exec_grade > executor.getExec())
-			cout << executor.getName() << " has been pardoned by Zaphod Beeblebrox" << endl;
+		if (this->_signed == true && this->_exec_grade > executor.getGrade())
+			cout << getTarget() << " has been pardoned by Zaphod Beeblebrox" << endl;
 
 		else
 			throw NotExecuted();
@@ -62,7 +61,7 @@ void PresidentialPardonForm::beSigned(Bureaucrat &name)
 {
 	try
 	{
-		if (this->_signed == false && this->_signed_grade > name.getGrade())
+		if (this->_signed == false && this->_sign_grade > name.getGrade())
 		{
 			name.signForm(*this);
 		}
@@ -71,7 +70,7 @@ void PresidentialPardonForm::beSigned(Bureaucrat &name)
 			name.signForm(*this);
 			throw FormAlreadySigned();
 		}
-		else if (this->_signed_grade < name.getGrade())
+		else if (this->_sign_grade < name.getGrade())
 		{
 			name.signForm(*this);
 			throw GradeTooLowException();
@@ -83,19 +82,25 @@ void PresidentialPardonForm::beSigned(Bureaucrat &name)
 	}
 }
 
-bool PresidentialPardonForm::getSigned()
+bool PresidentialPardonForm::getSign() const
 {
 	return (this->_signed);
 }
 
-string PresidentialPardonForm::getName()
+string PresidentialPardonForm::getName() const
 {
 	return (this->_name);
 }
 
-int PresidentialPardonForm::getSignedGrade()
+string	PresidentialPardonForm::getTarget() const
 {
-	return (this->_signed_grade);
+	return (this->_target);
+}
+
+
+int PresidentialPardonForm::getSignGrade() const
+{
+	return (this->_sign_grade);
 }
 
 void	PresidentialPardonForm::setSigned(bool value)
@@ -103,7 +108,24 @@ void	PresidentialPardonForm::setSigned(bool value)
 	this->_signed = value;
 }
 
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &ref)
+{
+  if (this != &ref) 
+	*this = ref;
+  return (*this);
+}
+
+std::ostream &operator<<(std::ostream &out, PresidentialPardonForm const &rhs)
+{
+    out << "Form name: "  << rhs.getName() << endl 
+	<< "Sign Grade: " << rhs.getSignGrade() << endl 
+	<< "Exec Grade: " << rhs.getExecGrade() << endl
+	<< "Target: " << rhs.getTarget() << endl
+	<< "Signed status: " << rhs.getSign() << endl;
+    return (out);
+}
+
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	cout << "Form Destructor called" << endl;
+	// cout << "Form Destructor called" << endl;
 }

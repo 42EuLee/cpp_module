@@ -16,6 +16,10 @@ class ScavTrap : public ClapTrap
 		void beRepaired(unsigned int amount);
 		void guardGate();
 
+		ClapTrap 	&operator=(const ClapTrap &ref)
+
 };
+
+std::ostream &operator<<(std::ostream &out, ScavTrap const &ref);
 
 #endif

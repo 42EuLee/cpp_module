@@ -13,15 +13,16 @@ class Bureaucrat ;
 class Form
 {
 	private:
-		string	_name;
-		bool	_signed;
-		int		_signed_grade;
+		const string	_name;
+		const int		_sign_grade;
+		const int		_exec_grade;
+		bool			_signed;
 
 	public:
 		Form();
 		~Form();
 		Form(const Form &old_obj);
-		Form(string name, int signed_grade);
+		Form(string name, int sign_grade, int exec_grade);
 		void beSigned(Bureaucrat &name);
 
 		class	GradeTooHighException : public exception
@@ -40,10 +41,14 @@ class Form
 			public:
 				virtual const char	*what(void) const throw();
 		};
-		bool	getSigned();
-		string	getName();
-		int		getSignedGrade();
+		bool	getSign() const;
+		string	getName() const;
+		int		getExecGrade() const;
+		int		getSignGrade() const;
 		void	setSigned(bool value);
+		Form	&operator=(const Form &ref);
 };
+
+std::ostream &operator<<(std::ostream &out, Form const &rhs);
 
 #endif

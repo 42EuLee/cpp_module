@@ -2,25 +2,23 @@
 
 ClapTrap::ClapTrap(string name)
 {
-	cout << "Constructor called" << endl;
+	// cout << "ClapTrap Constructor called" << endl;
 	this->_name = name;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
 }
 
-ClapTrap::ClapTrap (const ClapTrap &old_obj)
+ClapTrap::ClapTrap (const ClapTrap &ref)
 {
-	cout << "Copy constructor called" << endl;
-	*this = old_obj;
+	// cout << "Copy constructor called" << endl;
+	*this = ref;
 }
 
 ClapTrap::~ClapTrap ()
 {
-	cout << "Destructor called" << endl;
+	// cout << "ClapTrap Destructor called" << endl;
 }
-
-//ClapTrap <name> attacks <target>, causing <damage> points of damage!
 
 void ClapTrap::attack(const std::string& target)
 {
@@ -58,4 +56,42 @@ void ClapTrap::beRepaired(unsigned int amount)
 		cout << " amount and its hits points is " << _hit_points;
 		cout << " . What a chad." << endl;
 	}
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &ref)
+{
+	this->_attack_damage = ref.getAttackDamage();
+	this->_energy_points = ref.getEnergyPoints();
+	this->_attack_damage = ref.getAttackDamage();
+	this->_name	= ref.getName();
+	return (*this);
+}
+
+int	ClapTrap::getHitPoints(void) const
+{
+	return(this->_hit_points);
+}
+
+int	ClapTrap::getEnergyPoints(void) const
+{
+	return(this->_energy_points);
+}
+
+int	ClapTrap::getAttackDamage(void) const
+{
+	return(this->_attack_damage);
+}
+
+string ClapTrap::getName(void) const
+{
+	return(this->_name);
+}
+
+std::ostream &operator<<(std::ostream &out, ClapTrap const &ref)
+{
+    out << "ClapTrap Name: "  << ref.getName() << endl 
+	<< "Attack Damage: " << ref.getAttackDamage() << endl 
+	<< "Energy Points: " << ref.getEnergyPoints() << endl
+	<< "Hit Points: " << ref.getHitPoints() << endl;
+    return (out);
 }

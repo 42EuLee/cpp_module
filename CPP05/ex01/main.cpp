@@ -57,17 +57,16 @@ int	main(void)
 
 	Bureaucrat beau1 = Bureaucrat("beau1", 40); // higher grade
 	Bureaucrat beau2 = Bureaucrat("beau2", 60); //lower grade
-	Form form1 = Form("form1", 50);
+	Form form1 = Form("form1", 50, 50);
 
 
 	form1.beSigned(beau2);
 	form1.beSigned(beau1);
 	form1.beSigned(beau1);
 	form1.beSigned(beau2);
-	// form1.beSigned(beau2);
-	// form1.beSigned(beau2);
-	// beau1.signForm(form1);
-	// beau2.signForm(form1);
 
+	cout << endl;
+	cout << form1;
+	cout << endl;
 	
 }

@@ -1,23 +1,23 @@
 #include "Form.hpp"
 
-Form::Form()
+Form::Form(): _exec_grade(0), _sign_grade(0)
 {
-	cout << "Form Default constructor called" << endl;
+	// cout << "Form Default constructor called" << endl;
 }
 
-Form::Form(const Form &old_obj)
+Form::Form(const Form &old_obj): _name(old_obj.getName()), _sign_grade(old_obj.getSignGrade()), _exec_grade(old_obj.getExecGrade())
 {
-	cout << "Form copy constructor called" << endl;
-	*this = old_obj;
+	// cout << "Form copy constructor called" << endl;
+	this->_signed = old_obj.getSign();
 }
 
-Form::Form(string form)
+Form::Form(string name, int sign_grade, int exec_grade): _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
-	cout << "Form name constructor called" << endl;
+	// cout << "Form name constructor called" << endl;
+	// this->_name = form;
+	// this->_sign_grade = 0;
+	// this->_exec_grade = 0;
 	this->_signed = false;
-	this->_name = form;
-	this->_signed_grade = 0;
-	this->_exec_grade = 0;
 }
 
 const char	*Form::GradeTooHighException::what(void) const throw()
@@ -44,7 +44,7 @@ void Form::beSigned(Bureaucrat &name)
 {
 	try
 	{
-		if (this->_signed == false && this->_signed_grade > name.getGrade())
+		if (this->_signed == false && this->_sign_grade > name.getGrade())
 		{
 			name.signForm(*this);
 		}
@@ -53,7 +53,7 @@ void Form::beSigned(Bureaucrat &name)
 			name.signForm(*this);
 			throw FormAlreadySigned();
 		}
-		else if (this->_signed_grade < name.getGrade())
+		else if (this->_sign_grade < name.getGrade())
 		{
 			name.signForm(*this);
 			throw GradeTooLowException();
@@ -65,7 +65,7 @@ void Form::beSigned(Bureaucrat &name)
 	}
 }
 
-bool Form::getSigned() const
+bool Form::getSign() const
 {
 	return (this->_signed);
 }
@@ -75,12 +75,12 @@ string Form::getName() const
 	return (this->_name);
 }
 
-int Form::getSignedGrade() const
+int Form::getSignGrade() const
 {
-	return (this->_signed_grade);
+	return (this->_sign_grade);
 }
 
-int Form::getExec() const
+int Form::getExecGrade() const
 {
 	return (this->_exec_grade);
 }
@@ -90,7 +90,23 @@ void	Form::setSigned(bool value)
 	this->_signed = value;
 }
 
+Form &Form::operator=(const Form &ref)
+{
+  if (this != &ref) 
+	*this = ref;
+  return (*this);
+}
+
+std::ostream &operator<<(std::ostream &out, Form const &rhs)
+{
+    out << "Form name: "  << rhs.getName() << endl 
+	<< "Sign Grade: " << rhs.getSignGrade() << endl 
+	<< "Exec Grade: " << rhs.getExecGrade() << endl
+	<< "Signed status: " << rhs.getSign() << endl;
+    return (out);
+}
+
 Form::~Form()
 {
-	cout << "Form Destructor called" << endl;
+	// cout << "Form Destructor called" << endl;
 }

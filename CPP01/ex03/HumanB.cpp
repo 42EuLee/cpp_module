@@ -1,6 +1,11 @@
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
+HumanB::HumanB()
+{	
+}
+
+
 HumanB::HumanB(string name)
 {
 	this->_name = name;

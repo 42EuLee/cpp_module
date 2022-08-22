@@ -6,17 +6,13 @@ int	main(void)
 	try
 	{
 		Bureaucrat	Ding = Bureaucrat("Ding", 1);
-		cout << Ding.getName() << endl;
-		cout << Ding.getGrade() << endl;
+		cout << Ding << endl;
 		Ding.decrementGrade();
-		cout << Ding.getName() << endl;
-		cout << Ding.getGrade() << endl;
+		cout << Ding << endl;
 		Ding.incrementGrade();
-		cout << Ding.getName() << endl;
-		cout << Ding.getGrade() << endl;
+		cout << Ding << endl;
 		Ding.incrementGrade();
-		cout << Ding.getName() << endl;
-		cout << Ding.getGrade() << endl;
+		cout << Ding << endl;
 	}
 	catch (exception &caught)
 	{

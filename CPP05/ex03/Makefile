@@ -1,4 +1,4 @@
-NAME	= ThreeForms
+NAME	= Internkun
 
 SRC		= PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Bureaucrat.cpp main.cpp Form.cpp Intern.cpp
 
@@ -10,7 +10,7 @@ RM		= rm -rf
 
 all:	$(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	$(CC) $(SRC) -o $@
 
 clean:

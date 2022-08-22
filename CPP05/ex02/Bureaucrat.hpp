@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <string>
+# include <exception>
+
 # include "Form.hpp"
 
 using std::cout;
@@ -15,23 +17,24 @@ class Form ;
 class Bureaucrat
 {
 	private:
-		string _name;
-		int		_grade;
-		int		_exec_grade;
+		const string	_name;
+		int				_grade;
 
 	public:
-		Bureaucrat(string name, int grade, int exec);
+		Bureaucrat(string name, int grade);
 		Bureaucrat();
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat &old_obj);
 		const string	&getName(void) const;
 		int				getGrade(void) const;
-		int				getExec(void) const;
+		// int				getExecGrade(void) const;
 		void			setGrade(int grade);
 		void			incrementGrade(void);
 		void			decrementGrade(void);
 		void			signForm(Form &name);
 		void			executeForm(Form const &form);
+		Bureaucrat &operator=(const Bureaucrat &ref);
+
 
 		class	GradeTooHighException : public exception
 		{
@@ -50,8 +53,6 @@ class Bureaucrat
 			public:
 				virtual const char	*what(void) const throw();
 		};
-
-		
 };
 
 std::ostream &operator << (std::ostream &out, Bureaucrat const &rhs);

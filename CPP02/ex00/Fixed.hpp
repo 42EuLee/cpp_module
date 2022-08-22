@@ -12,19 +12,15 @@ using std::endl;
 class Fixed
 {
 	private:
-		int value ;
-		static const int bits = 8;
+		int					_value ;
+		static const int	_bits = 8;
 	public:
 		Fixed();
 		~Fixed();
 		Fixed (const Fixed &old_obj);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-		void operator = (const Fixed &eg )
-		{
-			cout << "Copy assignment operator called" << endl;
-			value = eg.value;
-		}
+		int getRawBits(void) const;
+		void setRawBits(int const raw);
+		Fixed &operator=(const Fixed &ref);
 };
 
 #endif

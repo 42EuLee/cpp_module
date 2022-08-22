@@ -15,8 +15,8 @@ class Form ;
 class Bureaucrat
 {
 	private:
-		string _name;
-		int		_grade;
+		const string	_name;
+		int				_grade;
 
 	public:
 		Bureaucrat(string name, int grade);
@@ -29,6 +29,7 @@ class Bureaucrat
 		void			incrementGrade(void);
 		void			decrementGrade(void);
 		void			signForm(Form &name);
+		Bureaucrat &operator=(const Bureaucrat &ref);
 
 		class	GradeTooHighException : public exception
 		{
@@ -40,11 +41,9 @@ class Bureaucrat
 		{
 			public:
 				virtual const char	*what(void) const throw();
-		};
-
-		
+		};	
 };
 
-std::ostream &operator << (std::ostream &out, Bureaucrat const &rhs);
+std::ostream &operator<<(std::ostream &out, Bureaucrat const &rhs);
 
 #endif

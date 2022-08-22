@@ -1,36 +1,43 @@
 #include "Point.hpp"
 
-Point::Point() : x(0) , y(0)
+Point::Point() : _x(0) , _y(0)
 {
 	// cout << "Default constructor called" << endl;
 }
 
-Fixed::Fixed (const Fixed &old_obj)
+Point::~Point()
+{
+	// cout << "Point destructor called" << endl;
+}
+
+Point::Point(const float x, const float y)
+{
+	this->_x = Fixed(x);
+	this->_y = Fixed(y);
+}
+
+
+Point::Point(const Point &ref)
 {
 	// cout << "Copy constructor called" << endl;
-	value = old_obj.getRawBits();
+	*this = ref;
 }
 
-Point::~Point(){}
-
-
-
-float Point::sign(Point const a, Point const b, Point const c)
+Point &Point::operator=(const Point &ref)
 {
-	return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
+	// cout << "Copy assignment operator called" << endl;
+	this->_x = ref.getX();
+	this->_y = ref.getY();
+	return (*this);
 }
 
-bool Point::PointInTriangle(Point const a, Point const b, Point const c, Point const point)
+Fixed	Point::getX(void) const 
 {
-	float d1, d2, d3;
-	bool has_neg, has_pos;
-
-	d1 = sign(pt, v1, v2);
-	d2 = sign(pt, v2, v3);
-	d3 = sign(pt, v3, v1);
-
-	has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
-	has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
-
-	return !(has_neg && has_pos);
+	return (this->_x);
 }
+
+Fixed	Point::getY(void) const 
+{
+	return (this->_y);
+}
+
