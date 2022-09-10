@@ -1,6 +1,6 @@
-NAME	= Fixed
+NAME	= Harl
 
-SRC		= Fixed.cpp main.cpp
+SRC		= Harl.cpp main.cpp
 
 CC		= c++
 
@@ -10,7 +10,7 @@ RM		= rm -rf
 
 all:	$(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	$(CC) $(SRC) -o $@
 
 clean:

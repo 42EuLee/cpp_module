@@ -10,15 +10,16 @@ using std::cout;
 
 int main(int argc, char **argv)
 {
-    ifstream infile(argv[1]); // 1st arg
-    string s1(argv[2]); // word to replace
-    string s2(argv[3]); // word that is replaced by
-
     if (argc != 4)
     {
         cerr << "Wrong number of arguments."  << endl;
         return (1);
     }
+    
+    ifstream infile(argv[1]); // 1st arg
+    string s1(argv[2]); // word to replace
+    string s2(argv[3]); // word that is replaced by
+
     if (!infile)
     {
         cerr << "Could not open " << argv[1] << endl;

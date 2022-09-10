@@ -12,6 +12,7 @@ class Zombie
 {
 	private:
 		string _name;
+		string testin;
 	public:
 		Zombie(void);
 		~Zombie(void);
@@ -21,8 +22,7 @@ class Zombie
 
 };
 
-
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+Zombie* newZombie(string name);
+void randomChump(string name);
 
 #endif

@@ -4,13 +4,13 @@ using std::string;
 
 Weapon::Weapon(string type)
 {
-	cout << "Weapon constructor called" << endl;
+	// cout << "Weapon constructor called" << endl;
 	this->_type = type;
 }
 
 Weapon::~Weapon()
 {
-	cout << "Weapon destructor called" << endl;
+	// cout << "Weapon destructor called" << endl;
 }
 
 const string& Weapon::getType(void) const

@@ -10,7 +10,7 @@ RM		= rm -rf
 
 all:	$(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	$(CC) $(SRC) -o $@
 
 clean:

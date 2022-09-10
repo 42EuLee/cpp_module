@@ -18,8 +18,12 @@ HumanB::~HumanB()
 
 void HumanB::attack()
 {
-	cout << this->_name << " attacks with their " 
-		<< this->_weapon->getType() << endl;
+	if (this->_weapon == NULL)
+		cout << this->_name  << " attacks with their bare fist "
+			<< endl;
+	else
+		cout << this->_name << " attacks with their " 
+			<< this->_weapon->getType() << endl;
 }
 
 void HumanB::setWeapon(Weapon &weapon)

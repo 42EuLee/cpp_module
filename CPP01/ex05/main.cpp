@@ -4,11 +4,14 @@ using std::string;
 using std::endl;
 using std::cout;
 
-int main(int argc, char **argv)
+int main()
 {
     Harl harl;
 
-    if (argc == 2)
-        harl.complain(argv[1]);
+    harl.complain("debug");
+    harl.complain("info");
+    harl.complain("warning");
+    harl.complain("error");
+    harl.complain("derp");
     return (0);
 }

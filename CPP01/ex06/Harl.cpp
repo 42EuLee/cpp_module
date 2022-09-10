@@ -8,7 +8,7 @@ Harl::~Harl()
 {
 }
 
-void Harl::complain( std::string level )
+void Harl::complain(std::string level)
 {
 	int i;
 
@@ -33,22 +33,22 @@ void Harl::complain( std::string level )
 	}
 }
 
-void Harl::debug( void )
+void Harl::debug(void)
 {
 	cout << "OMG, WHAT ARE YOU DOING?!" << endl;
 }
 
-void Harl::info( void )
+void Harl::info(void)
 {
 	cout << "STOP IT, YOU CAN'T!" << endl;
 }
 
-void Harl::warning( void )
+void Harl::warning(void)
 {
 	cout << "SOMEONE PLEASE HELP!" << endl;
 }
 
-void Harl::error( void )
+void Harl::error(void)
 {
 	cout << "PLEASE DON'T, I BEG OF YOU..." << endl;
 }
