@@ -34,6 +34,11 @@ int main(int argc, char **argv)
     
     string line;
     size_t len = s1.length();
+    if (len == 0)
+    {
+        cerr << "Word to replace has 0 length" << endl;
+        return (1);
+    }
     while (getline(infile, line))
     {
         while (true)

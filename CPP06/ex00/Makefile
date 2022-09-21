@@ -1,6 +1,6 @@
-NAME	= Harl
+NAME	= convert
 
-SRC		= Harl.cpp main.cpp
+SRC		= convert.cpp main.cpp
 
 CC		= c++
 

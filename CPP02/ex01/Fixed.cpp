@@ -8,23 +8,23 @@ Fixed::Fixed()
 
 Fixed::~Fixed()
 {
-	cout << "Destructor constructor called" << endl;
+	cout << "Destructor called" << endl;
 }
 
-Fixed::Fixed (const Fixed &ref)
+Fixed::Fixed(const Fixed &ref)
 {
 	cout << "Copy constructor called" << endl;
 	*this = ref;
 }
 
-Fixed::Fixed (const int intnum)
+Fixed::Fixed(const int intnum)
 {
 	cout << "Int constructor called" << endl;
 	this->_value = (intnum << this->_bits);
 
 }
 
-Fixed::Fixed (const float floatnum)
+Fixed::Fixed(const float floatnum)
 {
 	cout << "Float constructor called" << endl;
 	this->_value = roundf(floatnum * (1 << this->_bits));

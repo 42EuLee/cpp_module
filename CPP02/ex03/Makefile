@@ -10,8 +10,8 @@ RM		= rm -rf
 
 all:	$(NAME)
 
-$(NAME):
-	$(CC) $(SRC) -o $@
+$(NAME): $(SRC)
+	$(CC) $(CFLAGS) $(SRC) -o $@
 
 clean:
 	$(RM) $(NAME)

@@ -8,10 +8,10 @@ Fixed::Fixed()
 
 Fixed::~Fixed()
 {
-	cout << "Destructor constructor called" << endl;
+	cout << "Destructor called" << endl;
 }
 
-Fixed::Fixed (const Fixed &ref)
+Fixed::Fixed(const Fixed &ref)
 {
 	cout << "Copy constructor called" << endl;
 	*this = ref;
