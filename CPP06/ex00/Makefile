@@ -1,6 +1,6 @@
 NAME	= convert
 
-SRC		= convert.cpp main.cpp
+SRC		= Convert.cpp main.cpp
 
 CC		= c++
 
