@@ -49,7 +49,7 @@ Convert &Convert::operator=(const Convert &ref)
 // 	return (*this);
 // }
 
-void		Convert::printValuess(int cases)
+void		Convert::print_values(int cases)
 {
 	string string = this->_char_string;
 
@@ -65,7 +65,19 @@ void		Convert::printValuess(int cases)
 	if (cases == 1)
 	{
 		cout << "int: " << this->_intnum << endl;
-		cout << "float: " << this->_floatnum << endl;
+		cout <<  std::fixed << std::setprecision(1) << "float: " << this->_floatnum << "f" << endl;
+		cout << "double: " << this->_doublenum << endl;
+	}
+	if (cases == 2)
+	{
+		cout << "int: " << this->_intnum << endl;
+		cout <<  std::fixed << std::setprecision(1) << "float: " << this->_floatnum << "f" << endl;
+		cout << "double: " << this->_doublenum << endl;
+	}
+	if (cases == 3)
+	{
+		cout << "int: " << this->_intnum << endl;
+		cout <<  std::fixed << std::setprecision(1) << "float: " << this->_floatnum << "f" << endl;
 		cout << "double: " << this->_doublenum << endl;
 	}
 }
@@ -73,8 +85,24 @@ void		Convert::printValuess(int cases)
 void	Convert::convert_int(string &str)
 {
 	this->_intnum = atoi(str.c_str());
-	this->_doublenum = static_cast<int>(this->_intnum);
-	this->_floatnum = static_cast<int>(this->_intnum);
+	this->_doublenum = static_cast<double>(this->_intnum);
+	this->_floatnum = static_cast<float>(this->_intnum);
+	return ;
+}
+
+void	Convert::convert_double(string &str)
+{
+	this->_doublenum = atof(str.c_str());
+	this->_intnum = static_cast<int>(this->_doublenum);
+	this->_floatnum = static_cast<float>(this->_doublenum);
+	return ;
+}
+
+void	Convert::convert_float(string &str)
+{
+	this->_floatnum = atof(str.c_str());
+	this->_intnum = static_cast<int>(this->_floatnum);
+	this->_doublenum = static_cast<double>(this->_floatnum);
 	return ;
 }
 
@@ -85,15 +113,32 @@ void		Convert::convertInputs()
 	{
 		cout << "Special donezo" << endl;
 		this->_special_cases = 1;
-		printValuess(0);
+		print_values(0);
 		return ;
 	}
-	if (check_number(string) == 1)
+	if (check_int(string) == 1)
 	{
+		cout << "Entered int" << endl;
 		convert_int(string);
-		printValuess(1);
+		print_values(1);
 		return ;
 	}
+	else if (check_double(string) == 1)
+	{
+		cout << "Entered double" << endl;
+		convert_double(string);
+		print_values(2);
+		return ;
+	}
+	else if (check_float(string) == 1)
+	{
+		cout << "Entered float" << endl;
+		convert_double(string);
+		print_values(3);
+		return ;
+	}
+	else
+		cout << "Entered your mom" << endl;
 }
 
 
@@ -132,6 +177,7 @@ int	Convert::check_special(string &str)
 
 int	check_char(char *str, int sign, int i)
 {
+	// not implemented yet
 	if ((str[0] == '-' || str[0] == '+') && sign == 0)
 	{
 		check_char(str++, 1, 0);
@@ -151,7 +197,7 @@ int	check_char(char *str, int sign, int i)
 	return (1);
 }
 
-int	check_number(string &str)
+int	check_int(string &str)
 {
 	int	i;
 
