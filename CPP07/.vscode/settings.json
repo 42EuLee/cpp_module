@@ -1,0 +1,13 @@
+{
+	"files.associations": {
+		"ostream": "cpp",
+		"iostream": "cpp",
+		"__bit_reference": "cpp",
+		"__node_handle": "cpp",
+		"functional": "cpp",
+		"memory": "cpp",
+		"optional": "cpp",
+		"sstream": "cpp",
+		"vector": "cpp"
+	}
+}
