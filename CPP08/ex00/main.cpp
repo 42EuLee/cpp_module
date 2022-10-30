@@ -52,11 +52,13 @@ int main( void )
 {
 	int a[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
 
+    std::array<int , 10> myarray{1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
     std::vector<int> myvector(a, a + 10);
     std::deque<int> mydeque(a, a + 10);
     std::forward_list<int> myforwardlist(a, a + 10);
     std::list<int> mylist(a, a + 10);
 
+    easyFind(myarray, 8);
     easyFind(myvector, 8);
     easyFind(mydeque, 8);
     easyFind(myforwardlist, 8);

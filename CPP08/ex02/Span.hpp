@@ -26,7 +26,6 @@ class Span
 		int		shortestSpan() const;
 		int		longestSpan() const;
 		void	addNumber(int num);
-		void	addAllNumbers();
 		int		getIndex() const;
 		int		getIndexNum(int i) const;
 		Span	&operator=(const Span &ref);

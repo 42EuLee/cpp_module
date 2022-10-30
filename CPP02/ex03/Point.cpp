@@ -1,8 +1,10 @@
 #include "Point.hpp"
 
-Point::Point() : _x(0) , _y(0)
+Point::Point()
 {
 	// cout << "Default constructor called" << endl;
+	this->_x = 0;
+	this->_y = 0;
 }
 
 Point::~Point()
@@ -10,7 +12,7 @@ Point::~Point()
 	// cout << "Point destructor called" << endl;
 }
 
-Point::Point(const float x, const float y)
+Point::Point(float x, float y)
 {
 	this->_x = Fixed(x);
 	this->_y = Fixed(y);

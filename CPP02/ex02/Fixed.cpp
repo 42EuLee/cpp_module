@@ -48,7 +48,6 @@ int Fixed::getRawBits( void ) const
 
 void Fixed::setRawBits(int const raw) 
 {
-	// cout << "Copy assignment operator called " << endl;
 	this->_value = raw;
 }
 
@@ -63,7 +62,7 @@ Fixed Fixed::operator + (const Fixed &plus)
 {
 	Fixed value(*this); // creating a clone
 
-	value.setRawBits(this->toFloat() + plus.getRawBits());
+	value.setRawBits(this->getRawBits() + plus.getRawBits());
 	return (value);
 }
 
@@ -71,23 +70,23 @@ Fixed Fixed::operator - (const Fixed &minus)
 {
 	Fixed value(*this);
 
-	value.setRawBits(this->toFloat() + minus.getRawBits());
+	value.setRawBits(this->getRawBits() - minus.getRawBits());
 	return (value);
 }
 
 Fixed Fixed::operator * (const Fixed &multiply)
 {
-	Fixed value(*this);
+	Fixed value;
 
-	value.setRawBits(this->toFloat() * multiply.getRawBits());
+	value = this->toFloat() * multiply.toFloat();
 	return (value);
 }
 
 Fixed Fixed::operator / (const Fixed &divide)
 {
-	Fixed value(*this);
+	Fixed value;
 
-	value.setRawBits(this->toFloat() / divide.getRawBits());
+	value = this->toFloat() / divide.toFloat();
 	return (value);
 }
 

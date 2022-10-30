@@ -1,6 +1,6 @@
-NAME	= bsp
+NAME	= Span
 
-SRC		= main.cpp Fixed.cpp Point.cpp bsp.cpp
+SRC		= main.cpp Span.cpp
 
 CC		= c++
 

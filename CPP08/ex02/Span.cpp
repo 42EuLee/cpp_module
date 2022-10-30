@@ -38,11 +38,6 @@ void	Span::addNumber(int num)
 		throw MaxAmountReached();
 }
 
-void	Span::addAllNumbers()
-{
-	std::generate(this->_arr, this->_arr[this->_index - 1], FillArray);
-}
-
 int		Span::getIndex() const
 {
 	return(this->_index);
@@ -117,17 +112,6 @@ std::ostream &operator<<(std::ostream &out, Span const &rhs)
 int	checkSpan(int x, int y)
 {
 	return (abs(x - y));
-}
-
-void	Span::FillArray()
-{
-	if (this->_index < this->_maxAmount)
-	{
-		this->_arr[this->_index] = num;
-		this->_index++;
-	}
-	else
-		throw MaxAmountReached();
 }
 
 #endif

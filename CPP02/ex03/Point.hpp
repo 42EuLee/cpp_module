@@ -18,4 +18,6 @@ class Point
 		Point &operator=(const Point &ref );	
 };
 
+bool PointInTriangle(Point const point, Point const a, Point const b, Point const c);
+
 #endif

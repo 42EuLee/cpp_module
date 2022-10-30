@@ -31,8 +31,6 @@ void Fixed::setRawBits(int const raw)
 Fixed &Fixed::operator=(const Fixed &ref)
 {
 	cout << "Copy assignment operator called" << endl;
-	// if (this != &ref)
-	// 	*this = ref;
 	this->_value = ref.getRawBits();
 	return (*this);
 }
