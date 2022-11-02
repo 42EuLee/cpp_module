@@ -1,5 +1,5 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 # include <iostream>
 # include <string>
@@ -8,15 +8,15 @@ using std::cout;
 using std::endl;
 using std::string;
 
-class Animal
+class WrongAnimal
 {
 	protected:
 		string _type;
 	public:
-		Animal();
-		~Animal();
-		Animal(const Animal &old_obj);
-		virtual void makeSound() const;
+		WrongAnimal();
+		~WrongAnimal();
+		WrongAnimal(const WrongAnimal &old_obj);
+		void makeSound() const;
 		const string	&getType( void ) const ;
 };
 

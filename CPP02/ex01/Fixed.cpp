@@ -62,6 +62,6 @@ Fixed &Fixed::operator=(const Fixed &ref )
 
 std::ostream &operator<<(std::ostream &out, Fixed const &_value)
 {
-    out << _value.toFloat();
+    out << std::setprecision(5) <<_value.toFloat() << std::fixed;
     return (out);
 }

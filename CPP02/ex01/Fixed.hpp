@@ -4,6 +4,7 @@
 # include <iostream>
 # include <string>
 # include <cmath>
+# include <iomanip>
 
 using std::string;
 using std::cout;

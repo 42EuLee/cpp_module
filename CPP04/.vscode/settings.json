@@ -19,7 +19,6 @@
         "bitset": "cpp",
         "cctype": "cpp",
         "chrono": "cpp",
-        "cmath": "cpp",
         "cstdarg": "cpp",
         "cstddef": "cpp",
         "cstdint": "cpp",
@@ -50,7 +49,6 @@
         "tuple": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "utility": "cpp",
-        "iomanip": "cpp"
+        "utility": "cpp"
     }
 }

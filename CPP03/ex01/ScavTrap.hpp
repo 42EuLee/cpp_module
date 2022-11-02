@@ -11,15 +11,10 @@ class ScavTrap : public ClapTrap
 		ScavTrap(string name);
 		~ScavTrap();
 		ScavTrap (const ScavTrap &old_obj);
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
 		void guardGate();
-
-		ClapTrap 	&operator=(const ClapTrap &ref)
+		ScavTrap 	&operator=(const ScavTrap &ref);
 
 };
-
 std::ostream &operator<<(std::ostream &out, ScavTrap const &ref);
 
 #endif

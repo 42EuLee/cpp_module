@@ -1,16 +1,13 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap()
-{
-	this->_hit_points = 100;
-	this->_energy_points = 100;
-	this->_attack_damage = 30;
-	cout << "FragTrap default Constructor called" << endl;
-}
+// FragTrap::FragTrap()
+// {
+// 	cout << "FragTrap Default Constructor called" << endl;
+// }
 
-FragTrap::FragTrap(string name)
+FragTrap::FragTrap(string name) : ClapTrap(name)
 {
-	cout << "FragTrap name Constructor called" << endl;
+	cout << "FragTrap Default Constructor called" << endl;
 	this->_name = name;
 	this->_hit_points = 100;
 	this->_energy_points = 100;
@@ -22,7 +19,7 @@ FragTrap::~FragTrap()
 	cout << "FragTrap Destructor called" << endl;
 }
 
-FragTrap::FragTrap(const FragTrap &old_obj)
+FragTrap::FragTrap(const FragTrap &old_obj) : ClapTrap(old_obj.getName())
 {
 	cout << "FragTrap copy constructor called" << endl;
 	*this = old_obj;
@@ -30,43 +27,128 @@ FragTrap::FragTrap(const FragTrap &old_obj)
 
 void FragTrap::attack(const std::string& target)
 {
-	this->_energy_points--;
-	cout << "FragTrap " << _name;
-	cout << " does damage to teh " << target;
-	cout << " which does a whopping " << _attack_damage;
-	cout << " amount of damage. WOWZERS. Notice me senpai, notice meeeeee" << endl;
+	if (this->_hit_points < 1)
+	{
+		cout << "Claptrap " << ORG << _name;
+		cout << RESET << " is dead already you idiot. Hit what hit. ";
+		cout << RESET << endl;
+	}
+	else if (this->_energy_points > 0)
+	{
+		this->_energy_points--;
+		cout << "Claptrap " << ORG << _name;
+		cout << RESET << " attacks " << PNK << target;
+		cout << RESET << " causing " << RED << _attack_damage;
+		cout << RESET << " points of attack damage." << endl;
+	}
+	else
+	{
+		cout << "Claptrap " << ORG << _name;
+		cout << RESET << " is too tired of your shit as he have " << BLU << this->_energy_points;
+		cout << RESET << " energy points." << endl;
+
+	}
 }
 
 void FragTrap::takeDamage(unsigned int amount)
 {
-	this->_hit_points -= amount;
-	cout << "FragTrap " << _name;
-	cout << "  ouch " << amount;
-	cout << " damage HURRRRRTS " << _hit_points;
-	cout << " hp left on this retard." << endl;
+	if (this->_hit_points < 1)
+	{
+		this->_hit_points -= amount;
+		cout << "Claptrap " << ORG <<_name;
+		cout << RESET << " IS ALREADY DEAD!! He took " << RED << amount;
+		cout << RESET << " damage. There is " << GRN << _hit_points;
+		cout << RESET << " hit points. You monster, get some help." << endl;
+	}
+	else
+	{
+		this->_hit_points -= amount;
+		cout << "Claptrap " << ORG <<_name;
+		cout << RESET << " took " << RED << amount;
+		cout << RESET << " damage. There is " << GRN << _hit_points;
+		if (this->_hit_points <= 0)
+			cout << RESET << " no life anymore in this poor sad ClapTrap." << endl;
+		else
+			cout << RESET << " hit points left of the poor ClapTrap." << endl;
+
+	}
 }
 
 void FragTrap::beRepaired(unsigned int amount)
 {
-	if (this->_energy_points == 0)
+	if (this->_hit_points == 0)
 	{
-		cout << "FragTrap " << _name;
-		cout << " STAPH, YOU CAN'T HEAL. ";
-		cout << " The FragTrap has " << _energy_points;
-		cout << " Rip." << endl;
+		cout << "Claptrap " << ORG <<_name;
+		cout << RESET << " ain't doing shit no more. ";
+		cout << RESET << "The Claptrap has " << GRN <<_hit_points;
+		cout << RESET << " and that means its dead deado yo.";
+		cout << RESET << " Rip in spaghetti never forgetti." << endl;
+	}
+	else if (this->_energy_points > 0)
+	{
+		if (this->_energy_points < (int)amount)
+		{
+			cout << "Claptrap " << ORG <<_name;
+			cout << RESET " tries to repair itself for "<< TEL << amount;
+			cout << RESET " but no bueno. The Claptrap has " << BLU;
+			cout << this->_energy_points<< RESET << " energy left." << endl;
+		}
+		else
+		{
+			this->_energy_points -= amount;
+			this->_hit_points += amount;
+			cout << "Claptrap " << ORG <<_name;
+			cout << RESET " repairs itself for "<< TEL << amount;
+			cout << RESET " amount and its hits points is " << GRN <<_hit_points;
+			cout << RESET ". The Claptrap has " << BLU << this->_energy_points;
+			cout << RESET " left." << endl;
+		}
 	}
 	else
 	{
-		this->_energy_points -= amount;
-		this->_hit_points += amount;
-		cout << "FragTrap " << _name;
-		cout << " assembles itself for " << amount;
-		cout << " amount its dumb hp reached " << _hit_points;
-		cout << " . IDGAF." << endl;
+		cout << "Claptrap " << ORG <<_name;
+		cout << RESET << " can't repair itself no more. ";
+		cout << RESET << "The Claptrap has " << BLU <<_energy_points;
+		cout << RESET << " left and is too much of a weaksauce to get its ass up.";
+		cout << RESET << " Rip." << endl;
 	}
 }
 
 void FragTrap::highFivesGuys(void)
 {
 	cout << "WE DID IT!! HIGH FIVE GUYS!!...... NO? OKAY ;(" << endl;
+}
+
+int	FragTrap::getHitPoints(void) const
+{
+	return(this->_hit_points);
+}
+
+int	FragTrap::getEnergyPoints(void) const
+{
+	return(this->_energy_points);
+}
+
+int	FragTrap::getAttackDamage(void) const
+{
+	return(this->_attack_damage);
+}
+
+
+FragTrap 	&FragTrap::operator=(const FragTrap &ref)
+{
+	this->_attack_damage = ref.getAttackDamage();
+	this->_energy_points = ref.getEnergyPoints();
+	this->_hit_points = ref.getHitPoints();
+	this->_name	= ref.getName();
+	return (*this);
+}
+
+std::ostream &operator<<(std::ostream &out, FragTrap const &ref)
+{
+    out << "FragTrap Name: "  << ORG << ref.getName() << endl 
+	<< RESET << "Attack Damage: " << RED << ref.getAttackDamage() << endl 
+	<< RESET << "Energy Points: " << TEL << ref.getEnergyPoints() << endl
+	<< RESET << "Hit Points: " << GRN << ref.getHitPoints() << RESET << endl;
+    return (out);
 }

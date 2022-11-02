@@ -2,6 +2,7 @@
 
 Animal::Animal()
 {
+	this->_type = "Animal";
 	cout << "Default Animal Constructor called" << endl;
 }
 
@@ -23,5 +24,5 @@ void Animal::makeSound() const
 
 const string	&Animal::getType( void ) const
 {
-	return(this->type);	
+	return(this->_type);	
 }

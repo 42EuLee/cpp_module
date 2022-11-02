@@ -1,8 +1,8 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(string name)
+ScavTrap::ScavTrap(string name) : ClapTrap(name)
 {
-	cout << "ScavTrap Constructor called" << endl;
+	// cout << "ScavTrap Constructor called" << endl;
 	this->_name = name;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
@@ -11,55 +11,35 @@ ScavTrap::ScavTrap(string name)
 
 ScavTrap::~ScavTrap()
 {
-	cout << "ScavTrap Destructor called" << endl;
+	// cout << "ScavTrap Destructor called" << endl;
 }
 
-ScavTrap::ScavTrap (const ScavTrap &old_obj)
+ScavTrap::ScavTrap (const ScavTrap &old_obj) : ClapTrap(old_obj.getName())
 {
-	cout << "ScavTrap copy constructor called" << endl;
+	// cout << "ScavTrap copy constructor called" << endl;
 	*this = old_obj;
 }
 
-
 void ScavTrap::guardGate()
 {
-	cout << "ScavTrap is now in Gatekeeper mode. It does nothing, great.	" << endl;
+	cout << "ScavTrap is now in Gatekeeper mode. It does nothing, great." << endl;
 }
 
-void ScavTrap::attack(const std::string& target)
+ScavTrap 	&ScavTrap::operator=(const ScavTrap &ref)
 {
-	this->_energy_points--;
-	cout << "ScavTrap " << _name;
-	cout << " attacks " << target;
-	cout << " causing " << _attack_damage;
-	cout << " points of attack damage." << endl;
+	this->_attack_damage = ref.getAttackDamage();
+	this->_energy_points = ref.getEnergyPoints();
+	this->_hit_points = ref.getHitPoints();
+	this->_name	= ref.getName();
+	return (*this);
 }
 
-void ScavTrap::takeDamage(unsigned int amount)
-{
-	this->_hit_points -= amount;
-	cout << "ScavTrap " << _name;
-	cout << " took " << amount;
-	cout << " damage. There is " << _hit_points;
-	cout << " hit points left of the poor ScavTrap." << endl;
-}
 
-void ScavTrap::beRepaired(unsigned int amount)
+std::ostream &operator<<(std::ostream &out, ScavTrap const &ref)
 {
-	if (this->_energy_points == 0)
-	{
-		cout << "ScavTrap " << _name;
-		cout << " can't repair no more. ";
-		cout << " The ScavTrap has " << _energy_points;
-		cout << " Rip." << endl;
-	}
-	else
-	{
-		this->_energy_points -= amount;
-		this->_hit_points += amount;
-		cout << "ScavTrap " << _name;
-		cout << " repairs itself for " << amount;
-		cout << " amount and its hits points is " << _hit_points;
-		cout << " . What a chad." << endl;
-	}
+    out << "ScavTrap Name: "  << ORG << ref.getName() << endl 
+	<< RESET << "Attack Damage: " << RED << ref.getAttackDamage() << endl 
+	<< RESET << "Energy Points: " << TEL << ref.getEnergyPoints() << endl
+	<< RESET << "Hit Points: " << GRN << ref.getHitPoints() << RESET << endl;
+    return (out);
 }

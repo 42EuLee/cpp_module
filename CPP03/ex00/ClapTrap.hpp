@@ -1,6 +1,7 @@
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
+# include "styling.h"
 # include <iostream>
 # include <string>
 
@@ -15,22 +16,22 @@ class ClapTrap
 		int		_hit_points;
 		int		_energy_points;
 		int		_attack_damage;
+
 	public:
 		ClapTrap(string name);
 		~ClapTrap();
 		ClapTrap(const ClapTrap &old_obj);
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		void 		attack(const std::string& target);
+		void 		takeDamage(unsigned int amount);
+		void 		beRepaired(unsigned int amount);
 		ClapTrap 	&operator=(const ClapTrap &ref);
 
-		int		getHitPoints(void) const;
-		int		getEnergyPoints(void) const;
-		int		getAttackDamage(void) const;
-		string	getName(void) const;
+		int			getHitPoints(void) const;
+		int			getEnergyPoints(void) const;
+		int			getAttackDamage(void) const;
+		string		getName(void) const;
 
 };
-
 std::ostream &operator<<(std::ostream &out, ClapTrap const &ref);
 
 #endif

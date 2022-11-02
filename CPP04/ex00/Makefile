@@ -1,6 +1,6 @@
 NAME	= Animal
 
-SRC		= Animal.cpp Cat.cpp Dog.cpp main.cpp MyRetardedCat.cpp
+SRC		= Animal.cpp Cat.cpp Dog.cpp main.cpp WrongCat.cpp WrongAnimal.cpp
 
 CC		= c++
 

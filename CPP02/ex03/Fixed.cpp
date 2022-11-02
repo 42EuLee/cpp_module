@@ -169,8 +169,8 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
 }
 
 
-std::ostream &operator<<(std::ostream &out, Fixed const &ref)
+std::ostream &operator<<(std::ostream &out, Fixed const &_value)
 {
-    out << ref.toFloat();
+    out << std::setprecision(5) <<_value.toFloat() << std::fixed;
     return (out);
 }
