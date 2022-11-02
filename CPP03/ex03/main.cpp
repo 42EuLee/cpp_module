@@ -7,9 +7,9 @@ int	main(void)
 {
 	cout << TEL << "\n--------------------TEST 1-------------------------\n" << RESET << endl;
 	{
-		ClapTrap a1("ClapTrap");
+		ClapTrap a1("Joel");
 		cout << endl << a1 << endl;
-		a1.attack("Handsome Jack");
+		a1.attack("Yun zhe");
 		a1.takeDamage(2);
 		a1.beRepaired(1);
 		a1.beRepaired(1);
@@ -19,9 +19,9 @@ int	main(void)
 	cout << TEL << "\n--------------------TEST 2-------------------------\n" << RESET << endl;
 	{
 
-		ScavTrap a2("ScavTrap");
+		ScavTrap a2("Nazrin");
 		cout << endl << a2 << endl;
-		a2.attack("Psycho");
+		a2.attack("his meat");
 		a2.takeDamage(2);
 		a2.beRepaired(1);
 		a2.beRepaired(1);

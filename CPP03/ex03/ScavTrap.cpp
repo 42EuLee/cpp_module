@@ -116,7 +116,12 @@ void ScavTrap::beRepaired(unsigned int amount)
 
 void ScavTrap::guardGate()
 {
-	cout << "ScavTrap is now in Gatekeeper mode. It does nothing, great." << endl;
+	if (this->_hit_points < 1)
+	{
+		cout << "*Cricket Noises*" << endl;
+	}
+	else
+		cout << "ScavTrap is now in Gatekeeper mode. It does nothing, great." << endl;
 }
 
 int	ScavTrap::getHitPoints(void) const

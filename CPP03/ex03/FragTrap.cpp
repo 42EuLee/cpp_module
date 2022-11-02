@@ -116,7 +116,10 @@ void FragTrap::beRepaired(unsigned int amount)
 
 void FragTrap::highFivesGuys(void)
 {
-	cout << "WE DID IT!! HIGH FIVE GUYS!!...... NO? OKAY ;(" << endl;
+	if (this->_hit_points < 1)
+		cout << "YOU PROBABLY THINK THAT I CAN'T HIGH FIVE IF I AM DEAD, HIGH FIVEEEEEEE!!!" << endl;
+	else
+		cout << "WE DID IT!! HIGH FIVE GUYS!!...... NO? OKAY ;(" << endl;
 }
 
 int	FragTrap::getHitPoints(void) const

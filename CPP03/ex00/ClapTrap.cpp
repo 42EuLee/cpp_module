@@ -71,7 +71,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_hit_points == 0)
+	if (this->_hit_points <= 0)
 	{
 		cout << "Claptrap " << ORG <<_name;
 		cout << RESET << " ain't doing shit no more. ";
@@ -81,7 +81,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	else if (this->_energy_points > 0)
 	{
-		if (this->_energy_points < amount)
+		if (this->_energy_points < (int)amount)
 		{
 			cout << "Claptrap " << ORG <<_name;
 			cout << RESET " tries to repair itself for "<< TEL << amount;

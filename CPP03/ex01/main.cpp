@@ -3,50 +3,83 @@
 
 int	main(void)
 {
-	ClapTrap a1("Naz");
-	ScavTrap b1("Ding");
-	ScavTrap b2("Retard");
-	string gay = "Yun Zhe";
-	a1.attack(gay);
-	a1.takeDamage(2);
-	gay = "Jason";
-	a1.attack(gay);
-	a1.beRepaired(1);
-	a1.beRepaired(1);
-	a1.beRepaired(2);
-	a1.beRepaired(5);
-	a1.beRepaired(4);
-	a1.beRepaired(1);
-	a1.attack("Yun Zhe");
-	a1.takeDamage(16);
-	a1.attack("Yun Zhe");
-	a1.beRepaired(1);
-	a1.takeDamage(1);
+	{
+		cout << TEL << "--------Test 1---------" << RESET << endl;
+		cout << IDG << "<Test shows that all the member function works>" << RESET << endl;
+	
+		ScavTrap a1("Joel");
+		string yz = "Yun Zhe";
+	
+		cout << endl << YLW << "<ClapTrap status at start>" << RESET;
+		cout << endl << a1 << endl << endl;
 
-	b1.attack("Yun Zhe");
-	b1.takeDamage(2);
-	b1.attack("Yun Zhe");
-	b1.beRepaired(1);
-	b1.beRepaired(1);
-	b1.beRepaired(2);
-	b1.beRepaired(5);
-	b1.beRepaired(4);
-	b1.beRepaired(1);
-	b1.attack("Yun Zhe");
-	b1.takeDamage(16);
-	b1.attack("Yun Zhe");
-	b1.beRepaired(1);
-	b1.takeDamage(1);
+		a1.attack(yz);
+		yz = "Bruised YZ";
+		a1.attack(yz);
+		yz = "Dead YZ";
+		a1.attack(yz);
+		a1.takeDamage(2);
+		a1.beRepaired(1);
+		a1.guardGate();
 
-	// cout << endl << a1 << endl; // &operator<<
-	// a1 = b1; // &operator=
-	cout << a1 << endl;
-	cout << b1 << endl;
-	b1 = b2;
-	cout << b1 << endl;
+		cout << endl << YLW << "<ClapTrap status at end>" << RESET;
+		cout << endl << a1 << endl << endl;
+	}
+	{
+		cout << TEL << "--------Test 2---------" << RESET << endl;
+		cout << IDG << "<Test shows beRepaired() and attack() cannot be done with 0 energy>" << RESET << endl;
 
-	b1.beRepaired(1);
-	b1.attack("Edison");
-	b1.takeDamage(10);
-	b1.guardGate();
+		ScavTrap a1("Joel");
+		string yz = "Yun Zhe";
+	
+		cout << endl << YLW << "<ClapTrap status at start>" << RESET;
+		cout << endl << a1 << endl << endl;
+
+		a1.beRepaired(51);
+		a1.attack(yz);
+		a1.beRepaired(49);
+		a1.beRepaired(1);
+		a1.attack(yz);
+	
+		cout << endl << YLW << "<ClapTrap status at end>" << RESET;
+		cout << endl << a1 << endl << endl;
+	}
+	{
+		cout << TEL << "--------Test 3---------" << RESET << endl;
+		cout << IDG << "<Test shows that ClapTrap can't do anything if it's dead>" << RESET << endl;
+
+		ScavTrap a1("Joel");
+		string yz = "Yun Zhe";
+	
+		cout << endl << YLW << "<ClapTrap status at start>" << RESET;
+		cout << endl << a1 << endl << endl;
+
+		a1.takeDamage(100);
+		a1.takeDamage(1);
+		a1.attack(yz);
+		a1.beRepaired(1);
+		a1.guardGate();
+
+
+		cout << endl << YLW << "<ClapTrap status at end>" << RESET;
+		cout << endl << a1 << endl << endl;
+	}
+	{
+		cout << TEL << "--------Test 4---------" << RESET << endl;
+		cout << IDG << "<Test shows copy constructor work>" << RESET << endl;
+
+		ScavTrap a1("Joel");
+		ScavTrap a2("Nazrin");
+		string yz = "Yun Zhe";
+	
+		cout << endl << YLW << "<ClapTrap status at start>" << RESET;
+		cout << endl << a1 << endl << endl;
+
+		a1.attack(yz);
+		a1 = a2;
+
+
+		cout << endl << YLW << "<ClapTrap status at end>" << RESET;
+		cout << endl << a1 << endl << endl;
+	}
 }

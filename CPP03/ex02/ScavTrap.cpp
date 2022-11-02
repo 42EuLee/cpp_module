@@ -22,7 +22,12 @@ ScavTrap::ScavTrap (const ScavTrap &old_obj) : ClapTrap(old_obj.getName())
 
 void ScavTrap::guardGate()
 {
-	cout << "ScavTrap is now in Gatekeeper mode. It does nothing, great." << endl;
+	if (this->_hit_points < 1)
+	{
+		cout << "*Cricket Noises*" << endl;
+	}
+	else
+		cout << "ScavTrap is now in Gatekeeper mode. It does nothing, great." << endl;
 }
 
 ScavTrap 	&ScavTrap::operator=(const ScavTrap &ref)

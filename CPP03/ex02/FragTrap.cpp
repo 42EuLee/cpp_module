@@ -60,7 +60,10 @@ FragTrap::FragTrap(const FragTrap &old_obj) : ClapTrap(old_obj.getName())
 
 void FragTrap::highFivesGuys(void)
 {
-	cout << "WE DID IT!! HIGH FIVE GUYS!!...... NO? OKAY ;(" << endl;
+	if (this->_hit_points < 1)
+		cout << "YOU PROBABLY THINK THAT I CAN'T HIGH FIVE IF I AM DEAD, HIGH FIVEEEEEEE!!!" << endl;
+	else
+		cout << "WE DID IT!! HIGH FIVE GUYS!!...... NO? OKAY ;(" << endl;
 }
 
 FragTrap 	&FragTrap::operator=(const FragTrap &ref)
