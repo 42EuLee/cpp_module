@@ -18,7 +18,8 @@ class Cat : public Animal
 		Cat();
 		~Cat();
 		Cat(const Cat &old_obj);
-		virtual void makeSound() const;
+		void makeSound() const;
+		Cat &operator=(const Cat &ref);
 };
 
 #endif

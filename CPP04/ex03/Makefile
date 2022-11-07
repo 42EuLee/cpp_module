@@ -1,6 +1,6 @@
-NAME	=
+NAME	= Materia
 
-SRC		= Bureaucrat.cpp main.cpp
+SRC		= AMateria.cpp Cure.cpp Ice.cpp ICharacter.cpp MateriaSource.cpp Character.cpp main.cpp
 
 CC		= c++
 
@@ -11,7 +11,7 @@ RM		= rm -rf
 all:	$(NAME)
 
 $(NAME):
-	$(CC) $(SRC) -o $@
+	$(CC) $(CFLAGS) $(SRC) -o $@
 
 clean:
 	$(RM) $(NAME)

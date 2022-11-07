@@ -23,5 +23,12 @@ void AAnimal::makeSound() const
 
 const string	&AAnimal::getType( void ) const
 {
-	return(this->type);	
+	return(this->_type);	
+}
+
+AAnimal &AAnimal::operator=(const AAnimal &ref)
+{
+	// cout << "Copy assignment operator called" << endl;
+	this->_type = ref.getType();
+	return (*this);
 }

@@ -11,14 +11,14 @@ using std::string;
 class Brain
 {
 	private:
-		string	ideas[100];
+		string	_ideas[100];
 	public:
 		Brain();
 		~Brain();
 		Brain(const Brain &old_obj);
-		Brain	&operator=(const Brain &obj);
-		void	changeIdea(int id, string word);
-		const string	&getIdea(int id) const;
+		void 	getBrain(void) const;
+		Brain	&operator=(const Brain &ref);
 };
 
 #endif
+

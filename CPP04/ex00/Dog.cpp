@@ -2,8 +2,8 @@
 
 Dog::Dog()
 {
-	this->_type = "Dog";
 	cout << "Default Dog Constructor called" << endl;
+	this->_type = "Dog";
 }
 
 Dog::~Dog()
@@ -19,5 +19,12 @@ Dog::Dog(const Dog &old_obj)
 
 void Dog::makeSound() const
 {
-	cout << "*Autistic Teck Yuan noises*" << endl;
+	cout << "Teck Yuan : Bark bark" << endl;
+}
+
+Dog &Dog::operator=(const Dog &ref)
+{
+	// cout << "Copy assignment operator called" << endl;
+	this->_type = ref.getType();
+	return (*this);
 }

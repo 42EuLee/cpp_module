@@ -1,6 +1,6 @@
 NAME	= Brain
 
-SRC		= Brain.cpp Animal.cpp Cat.cpp Dog.cpp main.cpp MyRetardedCat.cpp
+SRC		= Brain.cpp Animal.cpp Cat.cpp Dog.cpp main.cpp
 
 CC		= c++
 
@@ -11,7 +11,7 @@ RM		= rm -rf
 all:	$(NAME)
 
 $(NAME):
-	$(CC) $(SRC) -o $@
+	$(CC) $(CFLAGS) $(SRC) -o $@
 
 clean:
 	$(RM) $(NAME)

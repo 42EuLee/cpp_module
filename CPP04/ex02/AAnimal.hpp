@@ -12,14 +12,16 @@ using std::string;
 class AAnimal
 {
 	protected:
-		string type;
+		string _type;
 	public:
 		AAnimal();
-		~AAnimal();
+		virtual ~AAnimal();
 		AAnimal(const AAnimal &old_obj);
 		virtual void 	makeSound() const = 0;
-		virtual Brain 	*getBrain(void) const = 0;
+		// virtual Brain 	*getBrain(void) const = 0;
 		const string	&getType( void ) const;
+		AAnimal &operator=(const AAnimal &ref);
+
 };
 
 #endif

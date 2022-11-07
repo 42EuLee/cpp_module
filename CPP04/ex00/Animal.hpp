@@ -14,10 +14,11 @@ class Animal
 		string _type;
 	public:
 		Animal();
-		~Animal();
+		virtual ~Animal();
 		Animal(const Animal &old_obj);
 		virtual void makeSound() const;
 		const string	&getType( void ) const ;
+		Animal &operator=(const Animal &ref);
 };
 
 #endif

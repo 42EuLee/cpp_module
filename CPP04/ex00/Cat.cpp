@@ -2,8 +2,8 @@
 
 Cat::Cat()
 {
-	this->_type = "Cat";
 	cout << "Default Cat Constructor called" << endl;
+	this->_type = "Cat";
 }
 
 Cat::~Cat()
@@ -20,4 +20,11 @@ Cat::Cat(const Cat &old_obj)
 void Cat::makeSound() const
 {
 	cout << "Nyaaaaaaaaaaaaan~~" << endl;
+}
+
+Cat &Cat::operator=(const Cat &ref)
+{
+	// cout << "Copy assignment operator called" << endl;
+	this->_type = ref.getType();
+	return (*this);
 }

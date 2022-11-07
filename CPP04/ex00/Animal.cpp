@@ -2,8 +2,8 @@
 
 Animal::Animal()
 {
-	this->_type = "Animal";
 	cout << "Default Animal Constructor called" << endl;
+	this->_type = "Animal";
 }
 
 Animal::~Animal()
@@ -25,4 +25,11 @@ void Animal::makeSound() const
 const string	&Animal::getType( void ) const
 {
 	return(this->_type);	
+}
+
+Animal &Animal::operator=(const Animal &ref)
+{
+	// cout << "Copy assignment operator called" << endl;
+	this->_type = ref.getType();
+	return (*this);
 }

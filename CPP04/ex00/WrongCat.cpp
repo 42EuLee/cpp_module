@@ -21,3 +21,10 @@ void WrongCat::makeSound() const
 {
 	cout << "HURR DURR, I AM A WRONG CAT NAMED TECK YUAN, I SUCK COCKS uhuHUHuhuhUHuuuhh" << endl;
 }
+
+WrongCat &WrongCat::operator=(const WrongCat &ref)
+{
+	// cout << "Copy assignment operator called" << endl;
+	this->_type = ref.getType();
+	return (*this);
+}

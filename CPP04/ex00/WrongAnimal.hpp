@@ -18,6 +18,8 @@ class WrongAnimal
 		WrongAnimal(const WrongAnimal &old_obj);
 		void makeSound() const;
 		const string	&getType( void ) const ;
+		WrongAnimal &operator=(const WrongAnimal &ref);
+
 };
 
 #endif

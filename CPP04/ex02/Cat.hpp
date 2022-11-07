@@ -13,14 +13,15 @@ using std::string;
 class Cat : public AAnimal
 {
 	private:
-		Brain 	*brain;
+		// string	_type;
+		Brain 	*_brain;
 	public:
 		Cat();
 		~Cat();
 		Cat(const Cat &old_obj);
+		Cat &operator=(const Cat &ref);
 		void makeSound() const;
-		Brain 	*getBrain(void) const;
-
+		Brain *getBrain(void);
 };
 
 #endif

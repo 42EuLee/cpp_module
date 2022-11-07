@@ -26,3 +26,10 @@ const string	&WrongAnimal::getType( void ) const
 {
 	return(this->_type);	
 }
+
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &ref)
+{
+	// cout << "Copy assignment operator called" << endl;
+	this->_type = ref.getType();
+	return (*this);
+}

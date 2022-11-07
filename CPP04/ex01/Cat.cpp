@@ -2,20 +2,20 @@
 
 Cat::Cat()
 {
-	this->type = "Cat";
-	this->brain = new Brain();
 	cout << "Default Cat Constructor called" << endl;
+	this->_type = "Cat";
+	this->_brain = new Brain();
 }
 
 Cat::~Cat()
 {
-	delete this->brain;
+	delete this->_brain;
 	cout << "Cat Destructor called" << endl;
 }
 
 Cat::Cat(const Cat &old_obj)
 {
-	cout << "Cat copy constructor called" << endl;
+	cout << "Cat Copy constructor called" << endl;
 	*this = old_obj;
 }
 
@@ -24,7 +24,14 @@ void Cat::makeSound() const
 	cout << "Nyaaaaaaaaaaaaan~~" << endl;
 }
 
-Brain	*Cat::get_Brain(void)
+Cat &Cat::operator=(const Cat &ref)
 {
-	return (this->brain);
+	// cout << "Copy assignment operator called" << endl;
+	this->_type = ref.getType();
+	return (*this);
+}
+
+Brain *Cat::getBrain(void)
+{
+	return (this->_brain);
 }

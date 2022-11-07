@@ -7,7 +7,7 @@ int main(void)
 	const int num = 10;
 
 	const	AAnimal *animals[num];
-	const	Brain *brain;
+	// const	AAnimal animals;
 
 	for (int i = 0; i < num; i++)
 	{
@@ -16,6 +16,10 @@ int main(void)
 		else
 			animals[i] = new Cat();
 		cout << animals[i]->getType() << endl;
+		// cout << animals[i]->makeSound() << endl;
+		animals[i]->makeSound();
+		// cout << "test\n" << endl;
+
 	}
 
 	return (0);

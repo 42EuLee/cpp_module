@@ -10,13 +10,11 @@ int main(void)
 	const Animal* dog = new Dog();
 	const Animal* cat = new Cat();
 	const WrongAnimal* wrongcat = new WrongCat();
-	// const Animal* x = new WrongCat();
 
 	cout << TEL << "Printing All Types" << RESET << endl;
 	std::cout << dog->getType() << " " << std::endl;
 	std::cout << cat->getType() << " " << std::endl;
 	std::cout << wrongcat->getType() << " " << std::endl;
-	// std::cout << x->getType() << " " << std::endl;
 
 	cout << TEL << "Printing All Sounds" << RESET << endl;
 	cout << ORG << "Dog sound: " << RESET << endl;

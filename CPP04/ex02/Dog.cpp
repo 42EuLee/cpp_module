@@ -2,29 +2,35 @@
 
 Dog::Dog()
 {
-	this->type = "Dog";
-	this->brain = new Brain();
 	cout << "Default Dog Constructor called" << endl;
+	this->_type = "Dog";
 }
 
 Dog::~Dog()
 {
-	delete (this->brain);
+	delete this->_brain;
 	cout << "Dog Destructor called" << endl;
 }
 
 Dog::Dog(const Dog &old_obj)
 {
-	cout << "Dog copy constructor called" << endl;
+	cout << "Dog Copy constructor called" << endl;
 	*this = old_obj;
 }
 
 void Dog::makeSound() const
 {
-	cout << "*Autistic Teck Yuan noises*" << endl;
+	cout << "Teck Yuan : Bark bark" << endl;
 }
 
-Brain	*Dog::getBrain(void) const
+Dog &Dog::operator=(const Dog &ref)
 {
-	return (this->brain);
+	// cout << "Copy assignment operator called" << endl;
+	this->_type = ref.getType();
+	return (*this);
+}
+
+Brain *Dog::getBrain(void)
+{
+	return (this->_brain);
 }

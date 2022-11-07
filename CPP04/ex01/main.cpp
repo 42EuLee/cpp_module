@@ -1,13 +1,15 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 int main(void)
 {
 	const int num = 10;
 
 	const	Animal *animals[num];
-	const	Brain *brain;
+	// const	Animal animal;
+
 
 	for (int i = 0; i < num; i++)
 	{
@@ -15,7 +17,8 @@ int main(void)
 			animals[i] = new Dog();
 		else
 			animals[i] = new Cat();
-		cout << animals[i]->getType() << endl;
+		cout << i + 1 << ". " << animals[i]->getType() << endl;
+		animals[i]->makeSound();
 	}
 
 	return (0);

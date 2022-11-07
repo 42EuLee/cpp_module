@@ -11,13 +11,14 @@ using std::string;
 class Brain
 {
 	private:
-		static const int ideas = 100;
+		string	_ideas[100];
 	public:
 		Brain();
 		~Brain();
 		Brain(const Brain &old_obj);
-		string brain[ideas];
-		Brain 	*get_Brain(void);
+		Brain 	*getBrain(void);
+		Brain	&operator=(const Brain &ref);
 };
 
 #endif
+

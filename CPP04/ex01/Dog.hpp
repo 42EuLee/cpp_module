@@ -6,6 +6,7 @@
 # include "Animal.hpp"
 # include "Brain.hpp"
 
+
 using std::cout;
 using std::endl;
 using std::string;
@@ -13,14 +14,16 @@ using std::string;
 class Dog : public Animal
 {
 	private:
-		Brain 	*brain;
+		// string	_type;
+		Brain 	*_brain;
 	public:
 		Dog();
 		~Dog();
 		Dog(const Dog &old_obj);
 		void makeSound() const;
-		Brain 	*get_Brain(void);
-	
+		Dog &operator=(const Dog &ref);
+		Brain *getBrain(void);
+
 };
 
 #endif
