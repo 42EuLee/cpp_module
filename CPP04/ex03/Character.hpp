@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include "AMateria.hpp"
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 using std::string;
 using std::cout;
@@ -16,15 +16,18 @@ class Character : public ICharacter
 		AMateria			*_inventory[4];
 		string				_name;
 		int					_count;
+
 	public:
-        Character(string &name);
-		virtual ~Character() {}
-		std::string const &getName() const;
-		void equip(AMateria* m);
-		void unequip(int idx);
-		void use(int idx, Character& target);
+		Character();
+        Character(string const name);
+		virtual ~Character();
+		Character(const Character &old_obj);
 
-
+		virtual std::string const &getName() const;
+		virtual void equip(AMateria* m);
+		virtual void unequip(int idx);
+		virtual void use(int idx, ICharacter& target);
+	
 		Character &operator=(const Character &ref);
 
 };

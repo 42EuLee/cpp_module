@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 using std::string;
 using std::cout;
@@ -17,12 +18,10 @@ class Ice : public AMateria
         Ice();
         ~Ice();
         Ice(const Ice &old_obj);
-        Ice(std::string const &type);
-        //something
-        std::string const & getType() const; //Returns the materia type
+        // Ice(std::string const &type);
+        std::string const & getType() const;
         Ice *clone() const;
         void use(ICharacter& target);
-
 
         Ice &operator=(const Ice &ref);
 

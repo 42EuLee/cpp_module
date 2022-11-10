@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 using std::string;
 using std::cout;
@@ -17,9 +18,8 @@ class Cure : public AMateria
         Cure();
         ~Cure();
         Cure(const Cure &old_obj);
-        Cure(std::string const &type);
-        //something
-        std::string const & getType() const; //Returns the materia type
+        // Cure(std::string const &type);
+        std::string const & getType() const;
         Cure *clone() const;
         void use(ICharacter& target);
 

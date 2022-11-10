@@ -3,8 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include "AMateria.hpp"
-#include "MateriaSource.hpp"
 #include "IMateriaSource.hpp"
 
 using std::string;
@@ -20,9 +18,12 @@ class MateriaSource : public IMateriaSource
     public:
         MateriaSource();
         ~MateriaSource();
-        void learnMateria(AMateria*);
-        AMateria* createMateria(std::string const & type);
+		MateriaSource(const MateriaSource &old_obj);
 
+        virtual void 		learnMateria(AMateria*);
+        virtual AMateria	*createMateria(std::string const & type);
+
+		MateriaSource		&operator=(const MateriaSource &old_obj);
 };
 
 #endif
