@@ -19,7 +19,7 @@ WrongCat::WrongCat(const WrongCat &old_obj)
 
 void WrongCat::makeSound() const
 {
-	cout << "HURR DURR, I AM A WRONG CAT NAMED TECK YUAN, I SUCK COCKS uhuHUHuhuhUHuuuhh" << endl;
+	cout << "HURR DURR, I AM A WRONG CAT NAMED TECK YUAN, I IS DUMB AS HECK uhuHUHuhuhUHuuuhh" << endl;
 }
 
 WrongCat &WrongCat::operator=(const WrongCat &ref)

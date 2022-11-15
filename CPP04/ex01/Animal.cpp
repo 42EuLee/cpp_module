@@ -2,18 +2,18 @@
 
 Animal::Animal()
 {
-	cout << "Default Animal Constructor called" << endl;
+	cout << BLU << "Default Animal Constructor called" << RESET << endl;
 	this->_type = "Animal";
 }
 
 Animal::~Animal()
 {
-	cout << "Animal Destructor called" << endl;
+	cout << YLW << "Animal Destructor called" << RESET << endl;
 }
 
 Animal::Animal(const Animal &old_obj)
 {
-	cout << "Animal copy constructor called" << endl;
+	cout << VLT <<"Animal copy constructor called" << RESET << endl;
 	*this = old_obj;
 }
 

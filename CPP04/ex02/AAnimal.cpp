@@ -7,7 +7,7 @@ AAnimal::AAnimal()
 
 AAnimal::~AAnimal()
 {
-	cout << "Dog Destructor called" << endl;
+	cout << "AAnimal Destructor called" << endl;
 }
 
 AAnimal::AAnimal(const AAnimal &old_obj)

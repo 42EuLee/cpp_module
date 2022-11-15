@@ -1,26 +1,57 @@
 #include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "styling.h"
 
 int main(void)
 {
-	const int num = 10;
-
-	const	AAnimal *animals[num];
-	// const	AAnimal animals;
-
-	for (int i = 0; i < num; i++)
+	cout << TEL << "------------------PDF Requirement------------------------" <<  RESET << endl;
 	{
-		if (i < num / 2)
-			animals[i] = new Dog();
-		else
-			animals[i] = new Cat();
-		cout << animals[i]->getType() << endl;
-		// cout << animals[i]->makeSound() << endl;
-		animals[i]->makeSound();
-		// cout << "test\n" << endl;
+		const int num = 10;
 
+		const	AAnimal *animals[num];
+		// const	AAnimal animalZ; // this shouldn't work at all cause of abstract
+
+		cout << "---------------------------------------------------------------" << endl;
+		for (int i = 0; i < num; i++)
+		{
+			if (i < num / 2)
+				animals[i] = new Dog();
+			else
+				animals[i] = new Cat();
+			cout << i + 1 << ". " << animals[i]->getType() << endl;
+			animals[i]->makeSound();
+			cout << "---------------------------------------------------------------" << endl;
+			// delete animals[i];
+		}
+		for (int i = 0; i < num; i++)
+			delete animals[i];
 	}
 
-	return (0);
+	cout << TEL << "------------------Deep Copy Test------------------------" <<  RESET << endl;
+	{
+		Cat	*oricat = new Cat();
+		Cat	*copycat = new Cat(*oricat);
+
+		cout << "oricat brain address: " GRN "<" << oricat->getBrain() << ">" RESET << endl;
+		cout << "copycat brain address: " GRN "<" << copycat->getBrain() << ">" RESET << endl;
+		cout << "oricat type: " BLU "<" << oricat->getType()<< ">" RESET << endl;
+		cout << "copy type: " BLU "<" << copycat->getType()<< ">" RESET << endl;
+		cout << endl;
+
+		cout << "Changing oricat type to <Jason>" RESET << endl;
+		cout << endl;
+		oricat->setType("Jason");
+
+		cout << "ori type: " BLU "<" << oricat->getType()<< ">" RESET << endl;
+		cout << "copy type: " BLU "<" << copycat->getType()<< ">" RESET << endl;
+		cout << endl;
+
+		delete oricat;
+		cout << copycat->getType() << endl;
+		// copycat->getBrain()->printIdeas();
+		// cout << oricat->getType() << endl; // should not work
+		delete copycat;
+	}
+    // system("leaks AAnimal");
 }

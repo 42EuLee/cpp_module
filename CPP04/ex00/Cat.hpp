@@ -20,6 +20,7 @@ class Cat : public Animal
 		Cat(const Cat &old_obj);
 		void makeSound() const;
 		Cat &operator=(const Cat &ref);
+
 };
 
 #endif

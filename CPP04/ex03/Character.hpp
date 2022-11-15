@@ -5,10 +5,13 @@
 #include <string>
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "styling.h"
 
 using std::string;
 using std::cout;
 using std::endl;
+
+class AMateria ;
 
 class Character : public ICharacter
 {

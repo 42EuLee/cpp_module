@@ -1,10 +1,10 @@
-NAME	= Materia
+NAME	= AMateria
 
 SRC		= AMateria.cpp MateriaSource.cpp Cure.cpp Ice.cpp Character.cpp main.cpp
 
 CC		= c++
 
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 RM		= rm -rf
 

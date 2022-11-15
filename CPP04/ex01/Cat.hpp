@@ -5,6 +5,7 @@
 # include <string>
 # include "Animal.hpp"
 # include "Brain.hpp"
+# include "styling.h"
 
 using std::cout;
 using std::endl;
@@ -21,7 +22,8 @@ class Cat : public Animal
 		Cat(const Cat &old_obj);
 		void makeSound() const;
 		Cat &operator=(const Cat &ref);
-		Brain *getBrain(void);
+		Brain	*getBrain(void) const;
+		void	setType(string change);
 };
 
 #endif

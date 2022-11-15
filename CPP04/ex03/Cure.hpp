@@ -5,6 +5,7 @@
 #include <string>
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
+#include "styling.h"
 
 using std::string;
 using std::cout;

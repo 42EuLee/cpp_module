@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include "styling.h"
 
 using std::cout;
 using std::endl;
@@ -16,9 +17,10 @@ class Brain
 		Brain();
 		~Brain();
 		Brain(const Brain &old_obj);
-		void 	getBrain(void) const;
+		Brain 	*getBrain(void);
 		Brain	&operator=(const Brain &ref);
+
+		void	printIdeas() const;
 };
 
 #endif
-

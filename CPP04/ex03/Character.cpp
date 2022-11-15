@@ -3,7 +3,7 @@
 
 Character::Character()
 {
-    cout << "Default Character Constructor called" << endl;
+    // cout << GRN << "Default character constructor called" << RESET << endl;
 	this->_name = "nameless";
 	for (int i = 0; i < 4; i++)
         this->_inventory[i] = NULL;
@@ -12,7 +12,7 @@ Character::Character()
 
 Character::Character(string const name)
 {
-    cout << "Character Constructor called" << endl;
+    // cout << GRN << "Character constructor called" << RESET << endl;
     this->_name = name;
     for (int i = 0; i < 4; i++)
         this->_inventory[i] = NULL;
@@ -22,7 +22,7 @@ Character::Character(string const name)
 
 Character::~Character()
 {
-    cout << "Destructor Called" << endl;
+    // cout << RED << "Character destructor called" << RESET << endl;
 	for (int i = 0; i < 4; i++)
 		delete this->_inventory[i];
 }
@@ -35,17 +35,23 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria* m)
 {
+	if (m == 0)
+	{
+		cout << "Unable to equip Materia." << endl;
+		return ;
+	}
     if (this->_count > 3)
     {
-        cout << this->_name << "'s inventory is full !!" << endl;
+        cout << ORG <<this->_name << RESET << "'s inventory is full !!"  << endl;
         return ;
     }
     for (int i = 0; i < 4; i++)
     {
         if (this->_inventory[i] == NULL)
 		{
+			this->_count++;
             this->_inventory[i] = m->clone();
-			cout << this->_name << "has equiped Materia Type" << endl;
+			cout << ORG << this->_name << RESET << " has equiped a Materia !!" << endl;
 			break ;
 		}
     }
@@ -65,8 +71,10 @@ void Character::unequip(int idx)
 	}
 	else
 	{
+		delete this->_inventory[idx];
 		this->_inventory[idx] = NULL;
-		cout << "Inventory " << idx << " has been unequiped !!" << endl;
+		cout << "Inventory " << ORG << idx << RESET <<" has been unequiped !!" << endl;
+		this->_count--;
 	}
 }
 
@@ -88,7 +96,7 @@ void Character::use(int idx, ICharacter& target)
 
 Character::Character(const Character &old_obj)
 {
-		cout << "Character copy assignment operator called" << endl;
+		// cout << "Character copy assignment operator called" << endl;
 	    this->_name = old_obj.getName();
 		for (int i = 0; i < 4; i++)
 		{
@@ -104,7 +112,7 @@ Character::Character(const Character &old_obj)
 
 Character &Character::operator=(const Character &ref)
 {
-	cout << "Copy assignment operator called" << endl;
+	// cout << "Copy assignment operator called" << endl;
     this->_name = ref.getName();
 	for (int i = 0; i < 4; i++)
 	{

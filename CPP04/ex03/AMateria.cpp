@@ -9,18 +9,18 @@
 
 AMateria::AMateria(std::string const &type)
 {
-    cout << "AMateria constructor called" << endl;
+    // cout << GRN << "AMateria constructor called" << RESET << endl;
     this->_type = type;
 }
 
 AMateria::~AMateria()
 {
-    cout << "AMateria destructor called" << endl;
+    // cout << RED << "AMateria destructor called" << RESET << endl;
 }
 
 AMateria::AMateria(const AMateria &old_obj)
 {
-    cout << "AMateria copy constructor called" << endl;
+    // cout << YLW << "AMateria copy constructor called" << RESET << endl;
     this->_type = old_obj.getType();
 }
 
