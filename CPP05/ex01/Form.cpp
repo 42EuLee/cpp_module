@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form(): _exec_grade(0), _sign_grade(0)
+Form::Form(): _sign_grade(0) , _exec_grade(0)
 {
 	// cout << "Form Default constructor called" << endl;
 }
@@ -11,7 +11,7 @@ Form::Form(const Form &old_obj): _name(old_obj.getName()), _sign_grade(old_obj.g
 	this->_signed = old_obj.getSign();
 }
 
-Form::Form(string name, int sign_grade, int exec_grade): _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade)
+Form::Form(string name, int sign_grade, int exec_grade): _name(name), _sign_grade(sign_grade) , _exec_grade(exec_grade)
 {
 
 	// cout << "Form name constructor called" << endl;
@@ -88,9 +88,8 @@ void	Form::setSigned(bool value)
 
 Form &Form::operator=(const Form &ref)
 {
-  if (this != &ref) 
-	*this = ref;
-  return (*this);
+	this->_signed = ref.getSign();
+	return (*this);
 }
 
 std::ostream &operator<<(std::ostream &out, Form const &rhs)

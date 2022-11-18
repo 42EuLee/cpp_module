@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include "styling.h"
 
 using std::cout;
 using std::endl;

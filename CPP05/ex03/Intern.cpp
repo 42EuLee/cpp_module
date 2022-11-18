@@ -5,17 +5,17 @@
 
 Intern::Intern()
 {
-	cout << "Intern default constructor called" << endl;
+	// cout << "Intern default constructor called" << endl;
 }
 
 Intern::~Intern()
 {
-	cout << "Intern destructor called" << endl;
+	// cout << "Intern destructor called" << endl;
 }
 
 Intern::Intern(const Intern &old_obj)
 {
-	cout << "Intern copy constructor called" << endl;
+	// cout << "Intern copy constructor called" << endl;
 	*this = old_obj;
 }
 
@@ -43,8 +43,15 @@ Form *Intern::makeForm(string form, string target)
 			newform = new ShrubberyCreationForm(target);
 	}
 	if (i >= 3)
-		std::cout << "There's no such form";
+		std::cout << "There's no such form bro" << endl;
 	else
 		std::cout << "Form <" << types[i] << "> has been created\n";
 	return (newform);
 }
+
+Intern &Intern::operator=(const Intern &ref)
+{
+	(void)ref;
+	return (*this);
+}
+

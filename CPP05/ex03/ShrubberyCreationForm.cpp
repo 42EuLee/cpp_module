@@ -61,7 +61,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
 									"       |o|        | |         | |\n"
 									"       |.|        | |         | |\n"
 									"    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_";
-			cout << shrubbery << endl;
+			cout <<  GRN << shrubbery << RESET << endl;
 			// file << shrubbery << endl;
 			// file.close();
 		}

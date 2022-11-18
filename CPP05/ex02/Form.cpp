@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form(): _exec_grade(0), _sign_grade(0)
+Form::Form(): _sign_grade(0), _exec_grade(0)
 {
 	// cout << "Form Default constructor called" << endl;
 }

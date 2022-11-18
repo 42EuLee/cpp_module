@@ -4,14 +4,14 @@ SRC		= Bureaucrat.cpp main.cpp
 
 CC		= c++
 
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 RM		= rm -rf
 
 all:	$(NAME)
 
 $(NAME): $(SRC)
-	$(CC) $(SRC) -o $@
+	$(CC) $(CFLAGS) $(SRC) -o $@
 
 clean:
 	$(RM) $(NAME)

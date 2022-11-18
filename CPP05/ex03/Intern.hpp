@@ -21,6 +21,8 @@ class Intern
 		~Intern();
 		Intern(const Intern &old_obj);
 		Form *makeForm(string form, string name);
+
+		Intern &operator=(const Intern &ref);
 };
 
 #endif

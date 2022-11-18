@@ -20,7 +20,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat &old_obj): _name(old_obj.getName())
 Bureaucrat::Bureaucrat(string name, int grade): _name(name)
 {
 	// cout << "Bureaucrat assignment constructor called" << endl;
-	// this->_name = name;
 	this->_grade = grade;
 	if (grade < 1)
 		throw GradeTooHighException();
@@ -121,13 +120,12 @@ void		Bureaucrat::executeForm(Form const &form)
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &ref)
 {
-  if (this != &ref) 
-	*this = ref;
-  return (*this);
+  	this->_grade = ref.getGrade();
+	return (*this);
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &rhs)
 {
-    out << rhs.getName() << " grade <" << rhs.getGrade() << ">" << endl;
+    out << rhs.getName() << " grade <" << rhs.getGrade() << ">";
     return (out); 
 }

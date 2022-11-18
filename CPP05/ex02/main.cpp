@@ -7,98 +7,176 @@
 
 int	main(void)
 {
-	// cout << "Test 1:" << endl;
-	// try
-	// {
-	// 	Bureaucrat	Ding = Bureaucrat("Ding", 1);
-	// 	cout << Ding.getName() << endl;
-	// 	cout << Ding.getGrade() << endl;
-	// 	Ding.decrementGrade();
-	// 	cout << Ding.getName() << endl;
-	// 	cout << Ding.getGrade() << endl;
-	// 	Ding.incrementGrade();
-	// 	cout << Ding.getName() << endl;
-	// 	cout << Ding.getGrade() << endl;
-	// 	Ding.incrementGrade();
-	// 	cout << Ding.getName() << endl;
-	// 	cout << Ding.getGrade() << endl;
-	// }
-	// catch (exception &e)
-	// {
-	// 	std::cerr << e.what() << endl;
-	// }
+	cout << ORG << "----Test 1: Decrement and Increment----" << RESET << endl;
+	{
+		try
+		{
+		cout << YLW << "FYI -Smaller number grades represent an increasing order-" << RESET << endl;		
+			Bureaucrat	Ding = Bureaucrat("Ding", 1);
+			cout << TEL << Ding << RESET << endl;
+			cout << YLW << "\nDecrementing grade (increasing number)" << RESET << endl;		
+			Ding.decrementGrade();
+			cout << TEL << Ding << RESET << endl;
+			cout << YLW << "\nIncrementing (decreasing number)" << RESET << endl;		
+			Ding.incrementGrade();
+			cout << TEL << Ding << RESET << endl;
+			cout << YLW << "\nIncrementing over the maximum" << RESET << endl;		
+			Ding.incrementGrade();
+			cout << TEL << Ding << RESET << endl;
+		}
+		catch (exception &caught)
+		{
+			cout << caught.what() << endl;
+		}
+		cout << endl;
+	}
 
-	// cout << "Test 2:" << endl;
-	// try
-	// {
-	// 	Bureaucrat		Kneegirl = Bureaucrat("Knee girl", 151);
-	// 	std::cout << Kneegirl << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cerr << e.what() << std::endl;
-	// }
+	cout << ORG << "----Test 2: Initializing number that is impossible (too low/high)----" << RESET << endl;
+	{
+		cout << YLW << "Initializing at grade 151" << RESET << endl;
+		try
+		{
+			Bureaucrat Kneegirl = Bureaucrat("Kneegirl", 151);
+			std::cout << Kneegirl << std::endl;;
+		}
+		catch (std::exception &caught)
+		{
+			std::cout << caught.what() << std::endl;
+		}
+		cout << YLW << "Initializing at grade 0" << RESET << endl;
+		try
+		{
+			Bureaucrat Kneegirl = Bureaucrat("Kneegirl", 0);
+			std::cout << Kneegirl << std::endl;;
+		}
+		catch (std::exception &caught)
+		{
+			std::cout << caught.what() << std::endl;
+		}
 
-	// cout << "Test 3: " << endl;
-	// try
-	// {
-	// 	Bureaucrat	*derp = new Bureaucrat("derp", 100);
+		cout << YLW << "Initializing at a valid grade" << RESET << endl;
+		try
+		{
+			Bureaucrat	*Kneegirl = new Bureaucrat("Kneegirl", 100);
 
-	// 	cout << *derp;
+			cout << *Kneegirl << endl;
 
-	// 	delete derp;
-	// }
-	// catch (Bureaucrat::GradeTooHighException &e)
-	// {
-	// 	std::cerr << e.what() << endl;
-	// }
-	// catch (Bureaucrat::GradeTooLowException &e)
-	// {
-	// 	std::cerr  << e.what()<< endl;
-	// }
+			delete Kneegirl;
+		}
+		catch (Bureaucrat::GradeTooHighException &e)
+		{
+			std::cerr << e.what() << endl;
+		}
+		catch (Bureaucrat::GradeTooLowException &e)
+		{
+			std::cerr  << e.what()<< endl;
+		}
+		cout << endl;
+	}
 
-	// cout << "Test 4: " << endl;
+	cout << ORG << "----Test 3: Copy constructor and copy assignment operator-----" << RESET << endl;
+	{
+		cout << ORG << "-----Bureaucrat-----" << RESET << endl;
+		Bureaucrat Kneegirl = Bureaucrat("Kneegirl", 100);
+		Bureaucrat Kneegay = Bureaucrat("Kneegay", 20);
+		Bureaucrat Kneeguy(Kneegay);
 
-	Bureaucrat beau1 = Bureaucrat("beau1", 40); // higher grade
-	Bureaucrat beau2 = Bureaucrat("beau2", 60); // lower grade
-	Bureaucrat beau3 = Bureaucrat("beau3", 150); // Eu Lee
-	Bureaucrat beau4 = Bureaucrat("beau4", 1); // Global elite
+		cout << Kneeguy << endl;
+		cout << Kneegirl << endl;
+		Kneegirl = Kneegay;
+		cout << Kneegirl << endl;
+		cout << ORG << "-----Shrubbery-----" << RESET << endl;
+		Form *form1 = new ShrubberyCreationForm("derp");
+		Form *form2 = new ShrubberyCreationForm("derpderp");
 
-	Form *form1;
-	Form *form2;
-	Form *form3;
+		cout << *form1 << endl;
+		form1->beSigned(Kneegay);
+		cout << *form1 << endl;
+		form1 = form2;
+		cout << *form1 << endl;
+		cout << "here" << endl;
+		// delete form1;
+		// delete form2;
+		cout << ORG << "-----Robotomy-----" << RESET << endl;
+		Form *form3 = new RobotomyRequestForm("derp");
+		Form *form4 = new RobotomyRequestForm("derpderp");
 
-	form1 = new PresidentialPardonForm("derp");
-	form2 = new RobotomyRequestForm("derp2");
-	form3 = new ShrubberyCreationForm("derp3");
-	cout << "============\n";
-	form3->execute(beau4);
-	form3->beSigned(beau4);
-	form3->execute(beau4);
-	form3->beSigned(beau1);
-	form3->execute(beau4);
-	cout << "============\n";
-	form2->execute(beau4);
-	form2->beSigned(beau3);
-	form2->beSigned(beau1);
-	form2->beSigned(beau3);
-	form2->execute(beau4);
-	form2->execute(beau4);
-	form2->execute(beau4);
-	form2->execute(beau4);
-	form2->execute(beau4);
-	cout << "============\n";
+		cout << *form3 << endl;
+		form3->beSigned(Kneegay);
+		cout << *form3 << endl;
+		form3 = form4;
+		cout << *form3 << endl;
+		// delete form3;
+		// delete form4;
+		cout << ORG << "-----Presidential-----" << RESET << endl;
+		Form *form5 = new PresidentialPardonForm("derp");
+		Form *form6 = new PresidentialPardonForm("derpderp");
+
+		cout << *form5 << endl;
+		form5->beSigned(Kneegay);
+		cout << *form5 << endl;
+		form5 = form6;
+		cout << *form5 << endl;
+		// delete form1;
+		// delete form2;
+		
 	
-	form1->execute(beau4);
-	form1->beSigned(beau3);
-	form1->beSigned(beau1);
-	form1->beSigned(beau4);
-	form1->execute(beau4);
-	form1->execute(beau1);
-	cout << "============\n";
+	}
 
-	cout << endl;
-	delete form1;
-	// delete form2;
-	// delete form3;
+	cout << ORG << "----Test 4: Member function test cases----" << RESET << endl;
+	{
+		Bureaucrat beau1 = Bureaucrat("Bureaucrat higher grade (40)", 40); // Higher grade
+		Bureaucrat beau2 = Bureaucrat("Bureaucrat lower grade (60)", 60); // Lower grade
+		Bureaucrat beau3 = Bureaucrat("Bureaucrat lowest grade (150)", 150); // Worst grade
+		Bureaucrat beau4 = Bureaucrat("Bureaucrat highest grade (1)", 1); // Best grade
+
+		Form *form1;
+		Form *form2;
+		Form *form3;
+
+		form1 = new PresidentialPardonForm("derp");
+		form2 = new RobotomyRequestForm("derp2");
+		form3 = new ShrubberyCreationForm("derp3");
+		cout <<  TEL << "======Shrubbery Creation Form Test======" << RESET << endl;
+		cout << YLW << "----<1. Executing a non-signed form>----" << RESET << endl;
+		form3->execute(beau4);
+		cout << YLW << "----<2. Signing a non-signed form>----" << RESET << endl;
+		form3->beSigned(beau4);
+		cout << YLW << "----<3. Executing Form>----" << RESET << endl;
+		form3->execute(beau4);
+		cout << YLW << "----<4. Signing a signed form>----" << RESET << endl;
+		form3->beSigned(beau1);
+		cout <<  TEL << "======Robotomy Creation Form Test======" << RESET << endl;
+		cout << YLW << "----<1. Executing a non-signed form>----" << RESET << endl;
+		form2->execute(beau4);
+		cout << YLW << "----<2. Signing Form with a lower grade>----" << RESET << endl;
+		form2->beSigned(beau3);
+		cout << YLW << "----<3. Signing Form with a higher grade>----" << RESET << endl;
+		form2->beSigned(beau1);
+		cout << YLW << "----<4. Signing Form an already signed form----" << RESET << endl;
+		form2->beSigned(beau1);
+		cout << YLW << "----<5. Executing Form in a for loop>----" << RESET << endl;
+		for (int i = 0; i < 10 ; i++)
+			form2->execute(beau4);
+		cout <<  TEL << "======Shrubbery Creation Form Test======" << RESET << endl;
+		cout << YLW << "----<1. Executing a non-signed form>----" << RESET << endl;
+		form1->execute(beau4);
+		cout << YLW << "----<2. Signing Form with a lower grade>----" << RESET << endl;
+		form1->beSigned(beau3);
+		cout << YLW << "----<3. Signing Form with a higher grade>----" << RESET << endl;
+		form1->beSigned(beau4);
+		cout << YLW << "----<4. Signing Form an already signed form----" << RESET << endl;
+		form1->beSigned(beau1);
+		cout << YLW << "----<5. Executing Form a higher grade>----" << RESET << endl;
+		form1->execute(beau4);
+		cout << YLW << "----<6. Executing Form a lower grade>----" << RESET << endl;
+		form1->execute(beau1);
+		cout << TEL << "======end======" << RESET << endl;
+
+		cout << endl;
+		delete form1;
+		delete form2;
+		delete form3;
+	}
+	system("leaks ThreeForm");
 }

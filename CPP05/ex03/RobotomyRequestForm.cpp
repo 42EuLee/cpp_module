@@ -46,11 +46,12 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor)
 	{
 		if (this->_signed == true && this->_exec_grade > executor.getGrade())
 		{
+
 			cout << "*Retarded drilling noises, RIP eardrums*" << endl;
 			if (rand() % 2 == 0)
-				cout << _target << " has been rotomized with 50% success rate" << endl;
+				cout << GRN << _target << " has been rotomized with 50% success rate" << RESET << endl << endl;
 			else
-				cout << "Robotomy failed," << _target << " lost brain cells" << endl << endl;
+				cout << RED << "Robotomy failed, " << _target << " lost brain cells" << RESET << endl << endl;
 		}
 		else
 			throw NotExecuted();

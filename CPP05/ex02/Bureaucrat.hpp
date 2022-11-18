@@ -4,7 +4,7 @@
 # include <iostream>
 # include <string>
 # include <exception>
-
+# include "styling.h"
 # include "Form.hpp"
 
 using std::cout;
@@ -27,7 +27,6 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &old_obj);
 		const string	&getName(void) const;
 		int				getGrade(void) const;
-		// int				getExecGrade(void) const;
 		void			setGrade(int grade);
 		void			incrementGrade(void);
 		void			decrementGrade(void);

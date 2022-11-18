@@ -85,13 +85,13 @@ const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &ref)
 {
-  if (this != &ref) 
-	*this = ref;
-  return (*this);
+	if (this != &ref) 
+		*this = ref;
+  	return (*this);
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &rhs)
 {
-    out << rhs.getName() << " grade <" << rhs.getGrade() << ">" << endl;
+    out << rhs.getName() << " grade <" << rhs.getGrade() << ">";
     return (out); 
 }

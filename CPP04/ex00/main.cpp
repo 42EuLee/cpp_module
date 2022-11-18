@@ -28,7 +28,8 @@ int main(void)
 		cout << endl;
 		delete dog;
 		delete cat;
-		delete wrongcat;	
+		delete wrongcat;
+		// system("leaks Animal");
 	}
 
 	// {
@@ -52,7 +53,7 @@ int main(void)
 	// 	delete dog;
 	// }
 	{
-		// cout << TEL << "------------------Deep copy test2------------------------" <<  RESET << endl;
+		// cout << TEL << "------------------Deep copy test------------------------" <<  RESET << endl;
 
 		// const Cat	*cat = new Cat();
 		// const Cat	*copycat = new Cat(*cat);

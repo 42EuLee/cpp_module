@@ -53,5 +53,4 @@ class PresidentialPardonForm : public Form
 };
 
 std::ostream &operator<<(std::ostream &out, PresidentialPardonForm const &rhs);
-
 #endif
