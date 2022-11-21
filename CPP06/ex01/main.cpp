@@ -1,4 +1,5 @@
 #include "Data.hpp"
+#include "styling.h"
 
 int main(void)
 {
@@ -7,11 +8,13 @@ int main(void)
 	uintptr_t	serial;
 
 	data = new Data(100);
+	cout << BLU << "Data address: " << RESET << "|" << data << "|" << endl;
+
 	serial = serialize(data);
-	cout << data << endl;
-	cout << serial << endl;
+	cout << GRN << "Serialized data: " << RESET << "|" <<  serial << "|" << endl; 
+
 	deserialize = deserialization(serial);
-	cout << deserialize << endl;
+	cout << RED << "Deserialized data: " << RESET << "|" << deserialize << "|" << endl; 
 	delete (data);
 
 }

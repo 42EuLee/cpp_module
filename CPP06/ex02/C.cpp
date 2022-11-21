@@ -2,10 +2,10 @@
 
 C::C()
 {
-	cout << "Default constructor of C is called" << endl;
+	cout <<  GRN << "Default constructor of C is called" << RESET << endl;
 }
 
 C::~C()
 {
-	cout << "Destructor for C called" << endl;
+	cout << RED << "Destructor for C called" << RESET << endl;
 }

@@ -9,12 +9,12 @@
 
 Base::Base()
 {
-	cout << "Default constructor of Base called" << endl;
+	cout << BLU << "Default constructor of Base called" << RESET << endl;
 }
 
 Base::~Base()
 {
-	cout << "Destructor for Base called" << endl;
+	cout << RED << "Destructor for Base called" << RESET << endl;
 }
 
 Base *generate(void)
@@ -23,7 +23,6 @@ Base *generate(void)
 	srand(time(NULL));
 
 	random = rand() % 3;
-  	// cout << random << endl;
 
 	if (random == 0)
 	return (new A());
@@ -38,18 +37,18 @@ void identify_ptr(Base *p)
 {
     if (dynamic_cast<A*>(p) != nullptr) 
 	{
-    	cout << "A class" << endl;
+    	cout << YLW << "A class" << RESET << endl;
     }
 	else if (dynamic_cast<B*>(p) != nullptr) 
 	{
-    	cout << "B class" << endl;
+    	cout << YLW << "B class" << RESET << endl;
     }
 	else if (dynamic_cast<C*>(p) != nullptr)
 	{
-    	cout << "C class" << endl;
+    	cout << YLW << "C class" << RESET << endl;
 	}
 	else
-    	cout << "Rip conversion" << endl;
+    	cout << RED << "Rip conversion" << RESET << endl;
 }
 
 void identify_ref(Base& p)
@@ -57,7 +56,7 @@ void identify_ref(Base& p)
 	try 
 	{
 		(void)dynamic_cast<A &>(p);
-		cout << "Conversion for A is okay" << endl;
+		// cout << "Conversion for A is okay" << endl;
     }
     catch (std::bad_cast &bc)
 	{
@@ -66,7 +65,7 @@ void identify_ref(Base& p)
 	try 
 	{
 		(void)dynamic_cast<B &>(p);
-		cout << "Conversion for B is okay" << endl;
+		// cout << "Conversion for B is okay" << endl;
     }
     catch (std::bad_cast &bc)
 	{
@@ -75,7 +74,7 @@ void identify_ref(Base& p)
 	try 
 	{
 		(void)dynamic_cast<C &>(p);
-		cout << "Conversion for C is okay" << endl;
+		// cout << "Conversion for C is okay" << endl;
     }
     catch (std::bad_cast &bc)
 	{

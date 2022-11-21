@@ -18,6 +18,7 @@
 # include <string>
 # include <cmath>
 # include <climits>
+# include "styling.h"
 
 using std::string;
 using std::cout;

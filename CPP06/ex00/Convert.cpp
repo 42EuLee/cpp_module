@@ -18,10 +18,12 @@ Convert::Convert(char *input)
 	this->_special_cases = 0;
 	this->_special_double = "";
 	this->_special_float = "";
+	cout << "------------------------------------------------------" << endl;
 }
 
 Convert::~Convert()
 {
+	cout << "------------------------------------------------------" << endl;
 	cout << "Destructor called" << endl;
 }
 
@@ -50,25 +52,25 @@ void		Convert::print_values(string &str)
 {
 	if (this->_special_cases == 1)
 	{
-		cout << "char: |Impossible|" << endl;
-		cout << "int: |Impossible|" << endl;
-		cout << "float: |" << this->_special_float << "|" << endl;
-		cout << "double: |" << this->_special_double << "|"<< endl;
+		cout << "char: |" << RED << "Impossible" << RESET << "|" << endl;
+		cout << "int: |" << RED << "Impossible" << RESET << "|" << endl;
+		cout << "float: |" << GRN << this->_special_float << RESET << "|" << endl;
+		cout << "double: |" << GRN << this->_special_double << RESET << "|" << endl;
 		return ;
 	}
 	if (this->_doublenum >= 0 && this->_doublenum <= 32)
-		cout << "char: " << "|Non-displayable|" << endl;
+		cout << "char: " << "|" << YLW << "Non-displayable" << RESET << "|" << endl;
 	else if (this->_doublenum < 0 || this->_doublenum > 127)
-		cout << "char: " << "|Impossible|" << endl;
+		cout << "char: " << "|" << RED << "Impossible" << RESET << "|" << endl;
 	else
-		cout << "char: |" << this->_character << "|" << endl;
+		cout << "char: |" << GRN << this->_character << RESET << "|" << endl;
 
 	if (check_int_overflow(str) == 1)
-		cout << "int: |Impossible|"<< endl;
+		cout << "int: |" << RED << "Impossible" << RESET << "|"<< endl;
 	else
-		cout << "int: |" << this->_intnum << "|" << endl;
-	cout <<  std::fixed << std::setprecision(1) << "float: |" << this->_floatnum << "f|" << endl;
-	cout << "double: |" << this->_doublenum << "|" << endl;
+		cout << "int: |" << GRN << this->_intnum << RESET << "|" << endl;
+	cout <<  std::fixed << std::setprecision(1) << "float: " << GRN << "|" << this->_floatnum << "f|" << RESET << endl;
+	cout << "double: |" << GRN << this->_doublenum << RESET << "|" << endl;
 }
 
 void	Convert::convert_char(string &str)
@@ -112,41 +114,41 @@ void		Convert::convertInputs()
 	string string = this->_char_string;
 	if (check_special(string) == 1)
 	{
-		cout << "Special donezo" << endl;
+		cout << BLU << "Entered special" << RESET << endl;
 		this->_special_cases = 1;
 		print_values(string);
 		return ;
 	}
 	if (check_char(this->_char_string) == 1)
 	{
-		cout << "Entered char" << endl;
+		cout << BLU << "Entered char" << RESET << endl;
 		convert_char(string);
 		print_values(string);
 		return ;
 	}
 	else if (check_int(string) == 1)
 	{
-		cout << "Entered int" << endl;
+		cout << BLU << "Entered int" << RESET << endl;
 		convert_int(string);
 		print_values(string);
 		return ;
 	}
 	else if (check_double(string) == 1)
 	{
-		cout << "Entered double" << endl;
+		cout << BLU << "Entered double" << RESET << endl;
 		convert_double(string);
 		print_values(string);
 		return ;
 	}
 	else if (check_float(string) == 1)
 	{
-		cout << "Entered float" << endl;
+		cout << BLU "Entered float" << endl;
 		convert_double(string);
 		print_values(string);
 		return ;
 	}
 	else
-		cout << "Invalid Input" << endl;
+		cout << RED << "Invalid Input" << RESET << endl;
 }
 
 int Convert::check_int_overflow(string &str)

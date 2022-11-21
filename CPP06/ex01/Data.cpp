@@ -19,7 +19,7 @@ Data::~Data()
 Data::Data(const Data &ref)
 {
 	cout << "Copy constructor called" << endl;
-	*this = ref;
+	this->_number = ref.getNumber();
 }
 
 Data &Data::operator=(const Data &ref)

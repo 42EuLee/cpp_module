@@ -5,6 +5,7 @@
 # include <string>
 # include <cstdlib>
 # include <ctime>
+# include "styling.h"
 
 using std::cout;
 using std::endl;

@@ -2,10 +2,10 @@
 
 A::A()
 {
-	cout << "Default constructor of A is called" << endl;
+	cout << GRN << "Default constructor of A is called" << RESET << endl;
 }
 
 A::~A()
 {
-	cout << "Destructor for A called" << endl;
+	cout << RED << "Destructor for A called" << RESET << endl;
 }
