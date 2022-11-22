@@ -2,6 +2,7 @@
 # define WHATEVER_HPP
 
 #include <iostream>
+#include "styling.h"
 
 using std::cout;
 using std::endl;

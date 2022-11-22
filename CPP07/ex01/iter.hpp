@@ -1,7 +1,8 @@
-#ifndef ITER_HPP
+ #ifndef ITER_HPP
 # define ITER_HPP
 
 #include <iostream>
+#include "styling.h"
 
 using std::cout;
 using std::endl;
@@ -15,15 +16,16 @@ void add(T &derp)
 template <typename T>
 void print_array(T &derp)
 {
-	cout << derp << endl;
+	cout << derp << " ";
 }
 
 template <typename T>
-void iter(T array[], size_t size, void (*f)(T &derp))
+void iter(T array[], size_t size, void (*f)(T const &derp))
+// void iter(T array[], size_t size, void (*f)(T &derp))
 {
 	for (size_t i = 0; i < size; ++i)
         f(array[i]);
-	cout << "iter called donezo" << endl;
+	// cout << "iter called donezo" << endl;
 }
 
 #endif

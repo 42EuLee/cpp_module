@@ -6,6 +6,7 @@
 template<class T>
 Array<T>::Array() 
 {
+	// cout << "Default construtor called" << endl;
 	this->_size = 0;
     this->_arr = NULL;
 }
@@ -13,6 +14,7 @@ Array<T>::Array()
 template<class T>
 Array<T>::Array(unsigned int n) : _size(n)
 {
+	// cout << "Assignment construtor called" << endl;
 	this->_arr = new T[n];
 	for (size_t i = 0; i < this->_size; i++)
 			this->_arr[i] = 0;
@@ -27,6 +29,7 @@ Array<T>::Array(const Array &ref)
 template<class T>
 Array<T>::~Array()
 {
+	// cout << "Destructor called" << endl;
 	if (this->_size > 0)
 		delete (this->_arr);
 }
