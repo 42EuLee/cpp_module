@@ -40,7 +40,15 @@ void	Span::addNumber(int num)
 
 void	Span::addAllNumbers()
 {
-	std::generate(this->_arr, this->_arr[this->_index - 1], FillArray);
+	int	num;
+
+	srand(time(0));
+	while (this->_index < this->_maxAmount)
+	{
+		num = rand() % 10000;
+		this->_arr[this->_index] = num;
+		this->_index++;
+	}
 }
 
 int		Span::getIndex() const
@@ -117,17 +125,6 @@ std::ostream &operator<<(std::ostream &out, Span const &rhs)
 int	checkSpan(int x, int y)
 {
 	return (abs(x - y));
-}
-
-void	Span::FillArray()
-{
-	if (this->_index < this->_maxAmount)
-	{
-		this->_arr[this->_index] = num;
-		this->_index++;
-	}
-	else
-		throw MaxAmountReached();
 }
 
 #endif

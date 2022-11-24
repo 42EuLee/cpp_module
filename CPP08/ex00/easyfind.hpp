@@ -17,9 +17,10 @@ void easyFind(T &Container, int num)
 {
 	typename T::iterator iterate;
 
-    iterate = find(Container.begin(), Container.end(), num);
+    iterate = std::find(Container.begin(), Container.end(), num);
 	if (iterate != Container.end())
-        cout << "Number found in container: " << *iterate << endl;
+        cout << "Number found " << *iterate << ". Index no: " 
+            << std::distance(Container.begin(), std::find(Container.begin(), Container.end(), num)) << endl;
     else
         cout << "Number not found in container" << endl;
 }

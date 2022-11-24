@@ -1,6 +1,6 @@
-NAME	= Span
+NAME	= MutantStack
 
-SRC		= main.cpp Span.cpp
+SRC		= main.cpp
 
 CC		= c++
 
